@@ -1,0 +1,32 @@
+backend:
+  name: github
+  repo: thaibaole86/newgohub
+  base_url: https://api.netlify.com	
+
+media_folder: img/
+
+collections:
+  - name: config
+    label: Site Configuration
+    files:
+      - name: config
+        label: Site Configuration
+        file: site-metadata.json
+        fields:
+          - widget: string
+            name: title
+            label: Title
+            required: true
+          - widget: string
+            name: description
+            label: Description
+            required: true
+          - widget: select
+            name: palette
+            label: Color Palette
+            required: true
+            hint: The color palette used for the website.
+            options:
+              - Blue
+              - Green
+              - Black & White
