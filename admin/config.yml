@@ -2,9 +2,11 @@ backend:
   name: github
   repo: thaibaole86/newgohub
   base_url: https://api.netlify.com	
+  use_graphql: true
+
 
 media_folder: "images/uploads"
-
+local_backend: true
 collections:
   - name: config
     label: Site Configuration
@@ -43,3 +45,14 @@ collections:
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Rating (scale of 1-5)", name: "rating", widget: "number"}
       - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "product"
+    label: "Product"
+    folder: "_products/"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Product Image", name: "thumbnail", widget: "image"}
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Product Price", name: "price", widget: "number"}
+      - {label: "Product Description", name: "description", widget: "text"}

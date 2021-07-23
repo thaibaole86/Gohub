@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-    <script src="/js/main.js"></script>
-    <script src="/js/admin.js"></script>
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
     <header>
@@ -49,7 +49,7 @@
                     <h3>Choose an original SIM or an innovative E-SIM. It's your choice!</h3>
                     <span>
                         <button class="cta-button">BUY GLOBAL SIM</button>
-                        <button class="cta-button">EXPLORE E-SIM</button>
+                        <a href ="#products"><button class="cta-button">EXPLORE E-SIM</button></a>
                     </span>
                 </div>
             </div>
@@ -78,6 +78,15 @@
             </div>
             </div>
 
+            <div id="#products">
+                <div class="product-section">
+                <div class="container"> 
+                    <div id="product-list">
+                        <div id="product-name"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
 
     <div class="footer">
@@ -85,5 +94,6 @@
             <p>Copyright 2021</p>
         </div>
     </footer>
+    <script src="/js/main.js"></script>
 </body>
 </html>
