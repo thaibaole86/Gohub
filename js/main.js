@@ -33,11 +33,6 @@ window.addEventListener("hashchange", function() {
     displayHash();
   });
 
-
-function newmenuitem() {
-    document.getElementById('menu-items').innerHTML += "<li><a id=" + menu[i].id + " href=" + menu[i].url + ">" + menu[i].title + "</a></li>"
-}
-
 // Function hiện Sản phẩm
 
 function addsanpham() {
