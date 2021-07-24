@@ -1,7 +1,10 @@
+// Mỗi lần web load thì chạy các function
 window.addEventListener('load', addmenu);
 window.addEventListener('load', addsanpham);
 window.addEventListener('load', displayHash);
 
+
+// Function add thanh menu
 function addmenu() {
     let menu = [
         { title: "Home", url: "#home"},
@@ -35,7 +38,7 @@ function newmenuitem() {
     document.getElementById('menu-items').innerHTML += "<li><a id=" + menu[i].id + " href=" + menu[i].url + ">" + menu[i].title + "</a></li>"
 }
 
-// Sản phẩm
+// Function hiện Sản phẩm
 
 function addsanpham() {
     let sanpham = [
