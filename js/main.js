@@ -18,7 +18,7 @@ function addmenu() {
     }
 }
 
-// Mỗi lần load web thì Check xem # trên URL nó là gì thì sẽ insert phần HTML có id giống tên nó mà đang hide trên trang.
+//Function check xem # trên URL nó là gì thì sẽ insert phần HTML có id giống tên nó mà đang hide trên trang.
 
 function displayHash() {
     let theHash = window.location.hash;
