@@ -1,6 +1,6 @@
 window.addEventListener('load', addmenu);
 window.addEventListener('load', addsanpham);
-window.addEventListener('load', displayHash)
+window.addEventListener('load', displayHash);
 
 function addmenu() {
     let menu = [
