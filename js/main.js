@@ -4,10 +4,10 @@ window.addEventListener('load', displayHash);
 
 function addmenu() {
     let menu = [
-        { title: "Home", url: "#home", f: "onclick='load_page_home()'" },
-        { title: "Global SIM", url: "#globalsim", f: "onclick='load_page_globalsim()'"  },
-        { title: "E-SIM", url: "#products", f: "onclick='load_page_esim()'"  },
-        { title: "Contact", url: "#contact", f: "onclick='load_page_contact()'" }
+        { title: "Home", url: "#home"},
+        { title: "Global SIM", url: "#globalsim" },
+        { title: "E-SIM", url: "#products" },
+        { title: "Contact", url: "#contact"}
     ]       
 
     for (i = 0; i < menu.length; i++ ) {
