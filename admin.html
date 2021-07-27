@@ -11,17 +11,33 @@
 <body>
 <div id="admin-body">
   <div id="sidebar">
-    Admin Panel
+    <h2>Admin Panel</h2>
+    <ul>
+      <li>Manage Menu</li>
+    </ul>
   </div>
-  <div>
-    Admin Function
-    Menu Id
-    <input id='newmenuid'>
-    Menu title
-    <input id='newmenutitle'>
-    Menu Url
-    <input id='newmenuurl'>
-    <button onclick="addmenu()">Click me</button> 
+  <div id="admin-function">
+    <div id="menufunction">
+      <h2>Manage Menu</h2>
+      <h4>Add New Menu</h4>
+      <label for="newmenuid">New Menu Id</label>
+      <input id='newmenuid'>
+      <label for="newmenutitle">Menu title</label>
+      <input id='newmenutitle'>
+      <label for="newmenuurl">Menu Url</label>
+      <input id='newmenuurl'>
+      <button onclick="addmenu()">Add new menu</button> 
+    </div>
+    <div id="menu-listing">
+      <h4>Current Menu</h4>
+      <table id="menu-table">
+        <th>Order Id</th>
+        <th>Menu Item Name</th>
+        <th>Menu Url</th>
+      <tbody id="menulist">
+      </tbody>
+      </table>
+    </div>
   </div>
 </div>
 </body>
