@@ -230,10 +230,11 @@ header button:hover, .cta-button:hover {
     height: 100%;
     flex-wrap: wrap; 
     font-family: 'Lato';
+    justify-content: space-evenly;
 }
 
 #product-detail {
-    width: 25%;
+    width: 30%;
     display: inline-block;
     margin: 10px;
     border: 2px solid #fff;
@@ -311,13 +312,13 @@ header button:hover, .cta-button:hover {
 
 #product-detail:hover .product-button {
     visibility:visible;
+    width: 100%;
     margin-top: 10px;
     padding-top: 8px;
     padding-bottom: 8px;
     padding-right: 15px;
     padding-left: 15px;
     background-color: #05b5dc;
-    width: 100%;
     color: white;
     border: 0px solid rgb(211, 211, 211);
     cursor: pointer;
