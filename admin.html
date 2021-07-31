@@ -9,35 +9,59 @@
     <link rel="stylesheet" href="css/adminstyle.css">
 </head>
 <body>
+
 <div id="admin-body">
   <div id="sidebar">
     <h2>Admin Panel</h2>
     <ul>
-      <li>Manage Menu</li>
+      <li><a href="#menu" class="admin-menu-item">Manage Menu</a></li>
+      <li><a href="#product" class="admin-menu-item">Manage Products</a></li>
+      <li><a href="#blog" class="admin-menu-item">Manage Blog</a></li>
     </ul>
   </div>
+  <div id='admin-display'></div>
   <div id="admin-function">
-    <div id="menufunction">
+    <div id="#menu">
       <h2>Manage Menu</h2>
-      <h4>Add New Menu</h4>
-      <label for="newmenuid">New Menu Id</label>
-      <input id='newmenuid'>
-      <label for="newmenutitle">Menu title</label>
-      <input id='newmenutitle'>
-      <label for="newmenuurl">Menu Url</label>
-      <input id='newmenuurl'>
-      <button onclick="addmenu()">Add new menu</button> 
+      <div id="menu-listing">
+        <h4>Current Menu</h4>
+        <table id="menu-table">
+          <th>Menu ID</th>
+          <th>Menu Item Name</th>
+          <th>Menu Url</th>
+          <th>Menu Position</th>
+        <tbody id="menulist">
+        </tbody>
+        </table>
+      </div>
+      <br>
+      <div id="edit-menu">
+        <p>Select Menu ID</p>
+        <select id="menu-select">
+        </select>
+        <br>
+        <p>You are selecting <span id="select-menu-name"></span></p>
+        <button onclick="deletemenu()">Delete</button>
+        <button onclick="editmenu()">Edit Name</button>
+        <button onclick="editUrl()">Edit Url</button>
+        <button onclick="editPosition()">Edit Position</button>
+      </div>
+
+      <div id="menufunction"> 
+        <h4>Add New Menu</h4>
+        <label for="newmenuid">New Menu Position</label>
+        <input id='newmenuid' readonly>
+        <label for="newmenutitle">Menu title</label>
+        <input id='newmenutitle'>
+        <label for="newmenuurl">Menu Url</label>
+        <input id='newmenuurl'>
+        <button onclick="addmenu()">Add new menu</button> 
+      </div>
     </div>
-    <div id="menu-listing">
-      <h4>Current Menu</h4>
-      <table id="menu-table">
-        <th>Order Id</th>
-        <th>Menu Item Name</th>
-        <th>Menu Url</th>
-      <tbody id="menulist">
-      </tbody>
-      </table>
-    </div>
+
+    <div id="#product"></div>
+
+
   </div>
 </div>
 </body>

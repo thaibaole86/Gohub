@@ -58,3 +58,20 @@ function addsanpham(productdata) {
         
         }
     }
+function checklogin() {
+    let uid = document.getElementById('username').value;
+    let upw = document.getElementById('password').value;
+
+    if (uid == "admin" && upw == "admin") {
+        alert('Welcome Admin');
+        document.getElementById('top-bar-buttons').innerHTML = "<a href='/admin.html'><button>ADMIN</button></a>"
+        window.open('/admin.html');
+    }
+    else {
+        alert('You are not admin')
+    }
+}
+
+function nosubmit(event){
+    event.preventDefault();
+}

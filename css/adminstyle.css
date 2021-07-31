@@ -1,6 +1,11 @@
 body {
     margin: 0;
 }
+
+a ,p , h1, h2, h3, h4, h5, button, table, label, input {
+    font-family: 'Lato', sans-serif;;
+}
+
 #admin-body {
     display: flex;
     padding-right: 30px;
@@ -11,17 +16,52 @@ body {
     background-color: #05b5dc;
     width: 10%;
     color: white;
-    padding: 20px;
-    
+    padding: 20px
+}
+
+#sidebar li {  
+    list-style: none;
+    margin-bottom: 20px;
+
+}
+
+#sidebar li a {
+    text-decoration: none;
+    color: white;
 }
 
 #admin-function {
     background-color: white;
     width: 90%;
     padding: 20px;
+    display:none;
+}
+
+#admin-display {
+    background-color: white;
+    width: 90%;
+    padding: 20px;
 }
 
 #menu-table {
-    border: 1px solid black;
+    border: 1px solid grey;
     padding:10px;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+#menu-table th {
+    background-color: #04AA6D;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+#menu-table td, th {
+    padding: 8px;
+}
+
+#newmenuid {
+    background-color:grey;
 }

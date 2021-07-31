@@ -17,9 +17,8 @@
             <div>
                 <p>Hotline: 0901305739</p>
             </div>
-            <div>
+            <div id="top-bar-buttons">
                 <a href="#signup"><button>SIGN IN</button></a>
-                <a href="/admin.html"><button>ADMIN</button></a>
             </div>
         </div>
     </header>
@@ -58,7 +57,7 @@
             <div id="#signup">
                 <div id="sign-up">
                     <div class="container">
-                        <form class="sign-up-form">
+                        <form class="sign-up-form" onsubmit="return nosubmit(event)">
                             <span>
                             <h1>Sign Up Now</h1>
                             <p>Our membership offers 20% discount</p>
@@ -68,7 +67,7 @@
                             <label for="password"><a>Password</a></label>
                             <input id='password' name="password" type="password" required>
                             <span id="button-row">
-                                <button class="register-button">Login</button>
+                                <button onclick="checklogin()" class="register-button">Login</button>
                                 <br>
                                 <p>Don't have an account yet? <a href="#">Register here.</a></p>
                             </span>

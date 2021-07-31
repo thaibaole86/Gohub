@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\MindX-D29\\baitapjs"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "newgohub"
+	}
+}
