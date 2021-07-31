@@ -52,11 +52,19 @@ function fetchdataproduct(){
 
 function addsanpham(productdata) {
     let sanpham = productdata.records;
-    for (i = 0; i< sanpham.length; i++) {        
-        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].fields.productImage[0].url + ">" + "<div class='product-title'>" + sanpham[i].fields.productName + "</div>" + "<div class='product-description'>" + sanpham[i].fields.productDescription + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i].fields.productId +  "' ></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
+    for (i = 0; i< sanpham.length; i++) {       
+        if (sanpham[i].fields.Active == true) {
+        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].fields.productImage[0].url + ">" + "<div class='product-title'>" + sanpham[i].fields.productName + "</div>" + "<div class='product-description'>" + sanpham[i].fields.productDescription + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i].fields.productId +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
         
-        
+        // let goicuoc = sanpham[i].fields;
+        //for (j = 0; j < goicuoc['Name (from dataOption)'].length; j++) {
+        //    let dataoptions = 'data-options-' + sanpham[i].id; 
+        //    document.getElementById(dataoptions).innerHTML += goicuoc['Name (from dataOption)'] + " / " + goicuoc['Price (from dataOption)'];
+        //}  
+
         }
+        
+    }
     }
 function checklogin() {
     let uid = document.getElementById('username').value;

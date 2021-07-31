@@ -7,6 +7,7 @@
     <title>Document</title>
     <script src="js/admin.js"></script>
     <link rel="stylesheet" href="css/adminstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -26,6 +27,7 @@
       <div id="menu-listing">
         <h4>Current Menu</h4>
         <table id="menu-table">
+          <th></th>
           <th>Menu ID</th>
           <th>Menu Item Name</th>
           <th>Menu Url</th>
@@ -59,7 +61,42 @@
       </div>
     </div>
 
-    <div id="#product"></div>
+    <div id="#product">
+      <h2>Manage Products</h2>
+      <div id="product-listing">
+        <h4>Current Products</h4>
+        <table id="product-table">
+          <th></th>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Product Description</th>
+          <th>Product Feature Image</th>
+          <th>Active</th>
+        <tbody id="product-list">
+        </tbody>
+        </table>
+      </div>
+      <div id="product-detail">
+        <br>
+        <h4>Edit Product  Detail</h4>
+        <label>Product ID</label>
+        <br>
+        <input id="product-id">
+        <br>
+        <label>Product Name</label>
+        <br>
+        <input id="product-name">
+        <br>
+        <label>Product Description</label>
+        <br>
+        <textarea id="product-des"> </textarea>
+        <br>
+        <input id="product-active" type="checkbox">
+        <label>Active?</label>
+        <br>
+        <button onclick="updateproduct()">Update</button>
+      </div>
+  </div>
 
 
   </div>
