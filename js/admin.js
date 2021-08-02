@@ -19,7 +19,7 @@ function listmenu(data) {
   let menu = data.records;
   for (i = 0; i < menu.length; i++ ) {
     let stt = i + 1;
-    document.getElementById('menulist').innerHTML += "<table><tr>" + "<td>" + stt  + "</td><td><i class='fa fa-edit' onclick='editmenuinstant(this.id)'" + " id=" + menu[i].id + "></i>  " + menu[i].fields.menuTitle + "</td><td><i class='fa fa-edit' onclick='editurlinstant(this.id)'" + " id=" + menu[i].id + "></i>  " + menu[i].fields.menuUrl + "</td><td><i class='fa fa-edit' onclick='editpositioninstant(this.id)'" + " id=" + menu[i].id + "></i>  "  + menu[i].fields.id + "</td>" + "<td><i class='fa fa-trash' onclick='deletemenuinstant(this.id)'"  + " id=" + menu[i].id + "></i></td>" + "</tr></table>";
+    document.getElementById('menulist').innerHTML += "<table><tr>" + "<td>" + stt  + "</td><td><ion-icon name='create-outline' onclick='editmenuinstant(this.id)'" + " id=" + menu[i].id + "></ion-icon>  " + menu[i].fields.menuTitle + "</td><td><ion-icon name='create-outline' onclick='editurlinstant(this.id)'" + " id=" + menu[i].id + "></ion-icon>  " + menu[i].fields.menuUrl + "</td><td><ion-icon name='caret-down-outline' onclick='editpositioninstantup(this.id)'" + " id=" + menu[i].id + "></ion-icon>" + "<span id='menuposition-" + menu[i].id + "'> " + menu[i].fields.id + "</span>" + "<ion-icon name='caret-up-outline' onclick='editpositioninstantdown(this.id)'" + " id=" + menu[i].id + "></ion-icon>"  + "</td>" + "<td><ion-icon name='trash-outline' onclick='deletemenuinstant(this.id)'"  + " id=" + menu[i].id + "></ion-icon></td>" + "</tr></table>";
     }
 }
 
@@ -57,15 +57,6 @@ function deletemenuinstant(id){
     location.reload();
   }
 
-//Delete menu function
-function deletemenu(){
-  let id = document.getElementById('menu-select').value;
-  fetch(`https://api.airtable.com/v0/appJuih6tuaTappGZ/menu/${id}?api_key=keySoD6lDEycOXqdZ`, { method: "DELETE" })
-    .then(response => response.json())
-    .then(deleteConfirmation => console.log("DELETE: ", deleteConfirmation));
-    alert('Successfully Deleted Menu Item');
-    location.reload();
-  }
 
 //Edit menu instantly
 function editmenuinstant(id){
@@ -88,28 +79,6 @@ function editmenuinstant(id){
 
 }
 
-  //Edit menu function
-  function editmenu(){
-    let id = document.getElementById('menu-select').value;  
-    let _editdata = {
-      "fields": {
-        "menuTitle": prompt("Please enter new Menu Name"),
-      }
-    }
-    
-    fetch(`https://api.airtable.com/v0/appJuih6tuaTappGZ/menu/${id}?api_key=keySoD6lDEycOXqdZ`, { 
-      method: "PATCH",
-      body: JSON.stringify(_editdata),
-      headers: {"Content-type": "application/json; charset=UTF-8"}
-    })
-    .then(response => response.json()) 
-    .then(json => console.log(json));
-  
-    alert('Successfully Edited New Menu Item');
-    location.reload();
-  
-  }
-
   //Edit menu URL instantly
   function editurlinstant(id){
     let _editdata = {
@@ -131,38 +100,13 @@ function editmenuinstant(id){
   
   }
 
-  //Edit menu URL function
-  function editUrl(){
-    let id = document.getElementById('menu-select').value;  
-    let _editdata = {
-      "fields": {
-        "menuUrl": prompt("Please enter new Menu Url"),
-      }
-    }
-    
-    fetch(`https://api.airtable.com/v0/appJuih6tuaTappGZ/menu/${id}?api_key=keySoD6lDEycOXqdZ`, { 
-      method: "PATCH",
-      body: JSON.stringify(_editdata),
-      headers: {"Content-type": "application/json; charset=UTF-8"}
-    })
-    .then(response => response.json()) 
-    .then(json => console.log(json));
-  
-    alert('Successfully Edited New Menu Url');
-    location.reload();
-  
-  }
-
    //Edit menu Position function
-   function editpositioninstant(id){
-    let newid = parseInt(prompt("Please enter new Menu Position"));  
-    if (newid === null) {
-      return;
-    }
-    if (newid > 0) {
+   function editpositioninstantup(id){
+    let position = 'menuposition-' + id;
+    let currentposition = parseInt(document.getElementById(position).innerHTML);
       let _editdata = {
         "fields": {
-          "id": newid
+          "id": currentposition + 1
           }
         }
       
@@ -175,20 +119,15 @@ function editmenuinstant(id){
       .then(json => console.log(json));
       alert('Successfully Edited New Menu Position');
       location.reload();
-    }
+    
   }
 
-  //Edit menu Position function
-  function editPosition(){
-    let id = document.getElementById('menu-select').value;
-    let newid = parseInt(prompt("Please enter new Menu Position"));  
-    if (newid === null) {
-      return;
-    }
-    if (newid > 0) {
+  function editpositioninstantdown(id){
+    let position = 'menuposition-' + id;
+    let currentposition = parseInt(document.getElementById(position).innerHTML);
       let _editdata = {
         "fields": {
-          "id": newid
+          "id": currentposition - 1
           }
         }
       
@@ -201,8 +140,9 @@ function editmenuinstant(id){
       .then(json => console.log(json));
       alert('Successfully Edited New Menu Position');
       location.reload();
-    }
+    
   }
+
 
   // Load page according to Hash URL
   function displayHash() {
@@ -241,7 +181,7 @@ function listproduct(pdata) {
   let products = pdata.records;
   for (i = 0; i < products.length; i++ ) {
     let stt = i + 1;
-    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><i class='fa fa-edit' onclick='editproduct(this.id)'"  + " id=" + products[i].id + "></i></td><td>"  + "</td><td>" + stt + "</td><td>" + products[i].fields.productName + "</td><td>" + products[i].fields.productDescription + "</td><td>" + "<img src=" + products[i].fields.productImage[0].thumbnails.small.url + ">" + "</td><td>" + products[i].fields.Active +"</td></tr></table>";
+    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + products[i].id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + products[i].fields.productName + "</td><td>" + products[i].fields.productDescription + "</td><td>" + "<img src=" + products[i].fields.productImage[0].thumbnails.small.url + ">" + "</td><td>" + products[i].fields.Active +"</td></tr></table>";
   }
 }
 
@@ -265,8 +205,6 @@ function editproduct(id){
         document.getElementById('product-active').checked = false
       }
       });
-  
-
 }
 
 function updateproduct(){

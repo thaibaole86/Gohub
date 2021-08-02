@@ -7,7 +7,7 @@ a ,p , h1, h2, h3, h4, h5, table, label, input {
 }
 
 table {
-    text-align: center;
+    text-align: left;
 }
 
 #admin-body {
@@ -77,15 +77,15 @@ tr:nth-child(even) {
     background-color:grey;
 }
 
-.fa {
+ion-icon {
     cursor: pointer;
 }
 
-tr .fa {
+tr ion-icon {
     color: transparent;
 }
 
-tr:hover .fa {
+tr:hover ion-icon {
     color: black;
 }
 
