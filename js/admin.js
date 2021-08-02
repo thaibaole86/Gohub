@@ -19,7 +19,7 @@ function listmenu(data) {
   let menu = data.records;
   for (i = 0; i < menu.length; i++ ) {
     let stt = i + 1;
-    document.getElementById('menulist').innerHTML += "<table><tr>" + "<td>" + stt  + "</td><td>" + menu[i].id + "</td><td><i class='fa fa-edit' onclick='editmenuinstant(this.id)'" + " id=" + menu[i].id + "></i>  " + menu[i].fields.menuTitle + "</td><td><i class='fa fa-edit' onclick='editurlinstant(this.id)'" + " id=" + menu[i].id + "></i>  " + menu[i].fields.menuUrl + "</td><td><i class='fa fa-edit' onclick='editpositioninstant(this.id)'" + " id=" + menu[i].id + "></i>  "  + menu[i].fields.id + "</td>" + "<td><i class='fa fa-trash' onclick='deletemenuinstant(this.id)'"  + " id=" + menu[i].id + "></i></td>" + "</tr></table>";
+    document.getElementById('menulist').innerHTML += "<table><tr>" + "<td>" + stt  + "</td><td><i class='fa fa-edit' onclick='editmenuinstant(this.id)'" + " id=" + menu[i].id + "></i>  " + menu[i].fields.menuTitle + "</td><td><i class='fa fa-edit' onclick='editurlinstant(this.id)'" + " id=" + menu[i].id + "></i>  " + menu[i].fields.menuUrl + "</td><td><i class='fa fa-edit' onclick='editpositioninstant(this.id)'" + " id=" + menu[i].id + "></i>  "  + menu[i].fields.id + "</td>" + "<td><i class='fa fa-trash' onclick='deletemenuinstant(this.id)'"  + " id=" + menu[i].id + "></i></td>" + "</tr></table>";
     }
 }
 
