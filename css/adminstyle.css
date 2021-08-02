@@ -2,19 +2,23 @@ body {
     margin: 0;
 }
 
-a ,p , h1, h2, h3, h4, h5, button, table, label, input {
+a ,p , h1, h2, h3, h4, h5, table, label, input {
     font-family: 'Lato', sans-serif;;
 }
 
+table {
+    text-align: center;
+}
+
 #admin-body {
-    display: flex;
     padding-right: 30px;
     height: 100vh;
 }
 
-#sidebar {
-    background-color: #05b5dc;
-    width: 10%;
+.sidebar {
+    background-color:#FFF0E5;
+    width: 100%;
+    height: 100%;
     color: white;
     padding: 20px
 }
@@ -32,19 +36,19 @@ a ,p , h1, h2, h3, h4, h5, button, table, label, input {
 
 #admin-function {
     background-color: white;
-    width: 90%;
+
     padding: 20px;
     display:none;
 }
 
 #admin-display {
     background-color: white;
-    width: 90%;
+    min-height:100vh ;
     padding: 20px;
 }
 
 #menu-table, #product-table  {
-    border: 1px solid grey;
+    border: 0px solid grey;
     padding:10px;
     width: 100%;
     text-align: left;
@@ -66,6 +70,26 @@ a ,p , h1, h2, h3, h4, h5, button, table, label, input {
     padding: 8px;
 }
 
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
 #newmenuid {
     background-color:grey;
+}
+
+.fa {
+    cursor: pointer;
+}
+
+tr .fa {
+    color: transparent;
+}
+
+tr:hover .fa {
+    color: black;
+}
+
+tr:hover, tr:nth-child(even):hover {
+    background-color: blanchedalmond;
 }

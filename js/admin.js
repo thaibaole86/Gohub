@@ -10,7 +10,6 @@ function fetchdatamenu(){
       listmenu(data)
       console.log(data.records.length);
       latestmenuid = parseInt(data.records.length);
-      document.getElementById('newmenuid').value = latestmenuid + 1;
       });
 }
 
@@ -18,16 +17,9 @@ function fetchdatamenu(){
 // Show menu list
 function listmenu(data) {
   let menu = data.records;
-  let id =  document.getElementById('menu-select').value;
   for (i = 0; i < menu.length; i++ ) {
-      
-    document.getElementById('menulist').innerHTML += "<table><tr>" + "<td><button class='fa fa-trash' onclick='deletemenuinstant(this.id)'"  + " id=" + menu[i].id + "></button>" + "<td>" + menu[i].id + "</td><td><button class='fa fa-edit' onclick='editmenuinstant(this.id)'" + " id=" + menu[i].id + "></button>  " + menu[i].fields.menuTitle + "</td><td><button class='fa fa-edit' onclick='editurlinstant(this.id)'" + " id=" + menu[i].id + "></button>  " + menu[i].fields.menuUrl + "</td><td><button class='fa fa-edit' onclick='editpositioninstant(this.id)'" + " id=" + menu[i].id + "></button>  "  + menu[i].fields.id + "</td></tr></table>";
-
-    document.getElementById('menu-select').innerHTML += "<option>" + menu[i].id + "</option>"
-
-    if (menu[i].id == id) {
-        document.getElementById('selected-menu-name').innerHTML += menu[i].fields.menuTitle ;
-      }
+    let stt = i + 1;
+    document.getElementById('menulist').innerHTML += "<table><tr>" + "<td>" + stt  + "</td><td>" + menu[i].id + "</td><td><i class='fa fa-edit' onclick='editmenuinstant(this.id)'" + " id=" + menu[i].id + "></i>  " + menu[i].fields.menuTitle + "</td><td><i class='fa fa-edit' onclick='editurlinstant(this.id)'" + " id=" + menu[i].id + "></i>  " + menu[i].fields.menuUrl + "</td><td><i class='fa fa-edit' onclick='editpositioninstant(this.id)'" + " id=" + menu[i].id + "></i>  "  + menu[i].fields.id + "</td>" + "<td><i class='fa fa-trash' onclick='deletemenuinstant(this.id)'"  + " id=" + menu[i].id + "></i></td>" + "</tr></table>";
     }
 }
 
@@ -248,7 +240,8 @@ function fetchdataproduct(){
 function listproduct(pdata) {
   let products = pdata.records;
   for (i = 0; i < products.length; i++ ) {
-    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><button class='fa fa-edit' onclick='editproduct(this.id)'"  + " id=" + products[i].id + "></button>" + "<td>" + products[i].id + "</td><td>" + products[i].fields.productName + "</td><td>" + products[i].fields.productDescription + "</td><td>" + "<img src=" + products[i].fields.productImage[0].thumbnails.small.url + ">" + "</td><td>" + products[i].fields.Active +"</td></tr></table>";
+    let stt = i + 1;
+    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><i class='fa fa-edit' onclick='editproduct(this.id)'"  + " id=" + products[i].id + "></i></td><td>"  + "</td><td>" + stt + "</td><td>" + products[i].fields.productName + "</td><td>" + products[i].fields.productDescription + "</td><td>" + "<img src=" + products[i].fields.productImage[0].thumbnails.small.url + ">" + "</td><td>" + products[i].fields.Active +"</td></tr></table>";
   }
 }
 

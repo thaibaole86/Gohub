@@ -8,98 +8,133 @@
     <script src="js/admin.js"></script>
     <link rel="stylesheet" href="css/adminstyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
 
 <div id="admin-body">
-  <div id="sidebar">
-    <h2>Admin Panel</h2>
-    <ul>
-      <li><a href="#menu" class="admin-menu-item">Manage Menu</a></li>
-      <li><a href="#product" class="admin-menu-item">Manage Products</a></li>
-      <li><a href="#blog" class="admin-menu-item">Manage Blog</a></li>
-    </ul>
-  </div>
-  <div id='admin-display'></div>
-  <div id="admin-function">
-    <div id="#menu">
-      <h2>Manage Menu</h2>
-      <div id="menu-listing">
-        <h4>Current Menu</h4>
-        <table id="menu-table">
-          <th></th>
-          <th>Menu ID</th>
-          <th>Menu Item Name</th>
-          <th>Menu Url</th>
-          <th>Menu Position</th>
-        <tbody id="menulist">
-        </tbody>
-        </table>
-      </div>
-      <br>
-      <div id="edit-menu">
-        <p>Select Menu ID</p>
-        <select id="menu-select">
-        </select>
+  <div class="columns">
+    <div class="column is-one-fifths">
+      <div class="block sidebar">
+      <aside class="menu">
         <br>
-        <p>You are selecting <span id="select-menu-name"></span></p>
-        <button onclick="deletemenu()">Delete</button>
-        <button onclick="editmenu()">Edit Name</button>
-        <button onclick="editUrl()">Edit Url</button>
-        <button onclick="editPosition()">Edit Position</button>
-      </div>
-
-      <div id="menufunction"> 
-        <h4>Add New Menu</h4>
-        <label for="newmenuid">New Menu Position</label>
-        <input id='newmenuid' readonly>
-        <label for="newmenutitle">Menu title</label>
-        <input id='newmenutitle'>
-        <label for="newmenuurl">Menu Url</label>
-        <input id='newmenuurl'>
-        <button onclick="addmenu()">Add new menu</button> 
+        <p class="menu-label">
+          Welcome Admin
+        </p>
+        <ul class="menu-list">
+          <li><a href="/index.html">Back To Site</a></li>
+          <li><a href="/index.html">Log Out</a></li>
+        </ul>
+        <p class="menu-label">
+          Content Management
+        </p>
+        <ul class="menu-list">
+          <li><a href="#menu">Menus</a></li>
+          <li><a href="#product">Products</a></li>
+          <li><a href="#blog">Blogs</a></li>
+        </ul>
+      </aside> 
       </div>
     </div>
 
-    <div id="#product">
-      <h2>Manage Products</h2>
-      <div id="product-listing">
-        <h4>Current Products</h4>
-        <table id="product-table">
-          <th></th>
-          <th>Product ID</th>
-          <th>Product Name</th>
-          <th>Product Description</th>
-          <th>Product Feature Image</th>
-          <th>Active</th>
-        <tbody id="product-list">
-        </tbody>
-        </table>
+    <div class="column is-four-fifths">
+      <div id='admin-display'></div>
+      <div id="admin-function">
+        <div class="columns">
+          <div class="column">
+            <div id="#menu">
+              <p class="title is-4">Manage Menu</p>
+            <div id="menu-listing">
+              
+              <div class="box">
+                <p class="subtitle is-5">Current Products</p>
+                <table id="menu-table" class="table">
+                  <th>ID</th>
+                  <th>Menu ID</th>
+                  <th>Menu Item Name</th>
+                  <th>Menu Url</th>
+                  <th>Menu Position</th>
+                  <th></th>
+                <tbody id="menulist">
+                </tbody>
+                </table>
+              </div>
+            </div>
+            <br>
+    
+    
+    
+            <div class="columns">
+              <div class="column">
+                <div class="box">
+                  <div id="menufunction"> 
+                    <p class="subtitle is-5">Add New Menu</p>
+                    <label class="label" for="newmenutitle">Menu Title</label>
+                    <input class="input" id='newmenutitle'>
+                    <br>
+                    <br>
+                    <label class="label" for="newmenuurl">Menu Url</label>
+                    <input class="input" id='newmenuurl'>
+                    <br>
+                    <br>
+                    <button class="button is-primary" onclick="addmenu()">Add new menu</button> 
+                  </div>
+                </div>
+              </div>
+
+            </div>
+    
+            </div>
+          </div>
+        </div>
+        <div id="#product">
+        <div class="columns">
+          <div class="column">
+          <p class="title is-4">Manage Products</p>
+          <div id="product-listing" class="box">
+            <p class="subtitle is-5">Current Products</p>
+            <table id="product-table" >
+              <th></th>
+              <th></th>
+              <th>ID</th>
+              <th>Product Name</th>
+              <th>Product Description</th>
+              <th>Product Feature Image</th>
+              <th>Active</th>
+            <tbody id="product-list">
+            </tbody>
+            </table>
+          </div>
+          <div id="product-detail" class="box">
+            <p class="subtitle is-5">Edit Product  Detail</p>
+            <label class="label">Product ID</label>
+            <input class="input" id="product-id" disabled>
+            <br>
+            <br>
+            <label class="label">Product Name</label>
+            <input class="input" id="product-name">
+            <br>
+            <br>
+            <label class="label">Product Description</label>
+            <textarea class="textarea" id="product-des"> </textarea>
+            <input id="product-active" type="checkbox">
+            <label >Active?</label>
+            <br>
+            <button class="button is-primary" onclick="updateproduct()">Update</button>
+          </div>
+          </div>
+        </div>
       </div>
-      <div id="product-detail">
-        <br>
-        <h4>Edit Product  Detail</h4>
-        <label>Product ID</label>
-        <br>
-        <input id="product-id">
-        <br>
-        <label>Product Name</label>
-        <br>
-        <input id="product-name">
-        <br>
-        <label>Product Description</label>
-        <br>
-        <textarea id="product-des"> </textarea>
-        <br>
-        <input id="product-active" type="checkbox">
-        <label>Active?</label>
-        <br>
-        <button onclick="updateproduct()">Update</button>
+    
+    
       </div>
+    </div>
+
   </div>
 
+  
 
-  </div>
 </div>
+
 </body>
 </html>
