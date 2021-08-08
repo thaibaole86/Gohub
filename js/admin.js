@@ -165,7 +165,7 @@ window.addEventListener("hashchange", function() {
 
 // Fetch product data
 function fetchdataproduct(){
-  fetch('https://api.npoint.io/fcbb98d5808c4aa93b64/product/').then(function(response) {
+  fetch('https://heuristic-volhard-2380aa.netlify.app/json/product.json').then(function(response) {
       pdata = response.json();
       return pdata;
   })
@@ -177,7 +177,7 @@ function fetchdataproduct(){
 
 // Show product list
 function listproduct(pdata) {
-  let product = pdata;
+  let product = pdata.product;
   for (i = 0; i < product.length; i++ ) {
     let stt = i + 1;
     document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + product[i].id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + product[i].name + "</td><td>" + product[i].description + "</td><td>" + "<img width='100px' src=" + product[i].image + ">" + "</td><td>" + product[i].active +"</td></tr></table>";

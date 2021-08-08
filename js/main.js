@@ -51,7 +51,7 @@ function fetchdataproduct(){
 // Function hiện Sản phẩm
 
 function addsanpham(productdata) {
-    let sanpham = productdata;
+    let sanpham = productdata.product;
     for (i = 0; i< sanpham.length; i++) {       
         if (sanpham[i].active == true) {
         document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].image + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i].id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
