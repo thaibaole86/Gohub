@@ -59,7 +59,7 @@ function addsanpham(productdata) {
         let goicuoc = sanpham[i].data;
         for (j = 0; j < goicuoc.length; j++) {
         let dataoptions = 'data-options-' + sanpham[i].id; 
-        document.getElementById(dataoptions).innerHTML += goicuoc[j].package + " - " + goicuoc[j].price + "$" + "<br>" ;
+        document.getElementById(dataoptions).innerHTML += goicuoc[j].package + " - " + goicuoc[j].price + "$" + " " ;
         }  
 
         }
