@@ -26,7 +26,8 @@ function listmenu(data) {
 // Add menu function
 function addmenu(){
   let newmenutitle = document.getElementById('newmenutitle').value
-    let newmenuurl = document.getElementById('newmenuurl').value;
+  let newmenuurl = document.getElementById('newmenuurl').value;
+
     let _data = {
       "fields": {
         "menuTitle": newmenutitle,
@@ -45,7 +46,6 @@ function addmenu(){
 
   alert('Successfully Added New Menu Item');
   location.reload();
-
 }
 
 //Delete menu instantly
@@ -143,7 +143,6 @@ function editmenuinstant(id){
     
   }
 
-
   // Load page according to Hash URL
   function displayHash() {
     let theHash = window.location.hash;
@@ -166,7 +165,7 @@ window.addEventListener("hashchange", function() {
 
 // Fetch product data
 function fetchdataproduct(){
-  fetch('https://api.airtable.com/v0/appJuih6tuaTappGZ/products?api_key=keySoD6lDEycOXqdZ').then(function(response) {
+  fetch('https://api.npoint.io/2415f0e6c0284935cc16/product/').then(function(response) {
       pdata = response.json();
       return pdata;
   })
@@ -178,10 +177,10 @@ function fetchdataproduct(){
 
 // Show product list
 function listproduct(pdata) {
-  let products = pdata.records;
-  for (i = 0; i < products.length; i++ ) {
+  let product = pdata;
+  for (i = 0; i < product.length; i++ ) {
     let stt = i + 1;
-    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + products[i].id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + products[i].fields.productName + "</td><td>" + products[i].fields.productDescription + "</td><td>" + "<img src=" + products[i].fields.productImage[0].thumbnails.small.url + ">" + "</td><td>" + products[i].fields.Active +"</td></tr></table>";
+    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + product[i].id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + product[i].name + "</td><td>" + product[i].description + "</td><td>" + "<img src=" + product[i].image + ">" + "</td><td>" + product[i].active +"</td></tr></table>";
   }
 }
 

@@ -40,7 +40,7 @@ window.addEventListener("hashchange", function() {
 
 // Fetch API Data Products
 function fetchdataproduct(){
-    fetch('https://api.airtable.com/v0/appJuih6tuaTappGZ/products?api_key=keySoD6lDEycOXqdZ').then(function(response) {
+    fetch('https://api.npoint.io/2415f0e6c0284935cc16/product/').then(function(response) {
         productdata = response.json();
         return productdata;
     })
@@ -51,10 +51,10 @@ function fetchdataproduct(){
 // Function hiện Sản phẩm
 
 function addsanpham(productdata) {
-    let sanpham = productdata.records;
+    let sanpham = productdata;
     for (i = 0; i< sanpham.length; i++) {       
-        if (sanpham[i].fields.Active == true) {
-        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].fields.productImage[0].url + ">" + "<div class='product-title'>" + sanpham[i].fields.productName + "</div>" + "<div class='product-description'>" + sanpham[i].fields.productDescription + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i].fields.productId +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
+        if (sanpham[i].active == true) {
+        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].image + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i].id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
         
         // let goicuoc = sanpham[i].fields;
         //for (j = 0; j < goicuoc['Name (from dataOption)'].length; j++) {
