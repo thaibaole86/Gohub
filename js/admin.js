@@ -165,7 +165,14 @@ window.addEventListener("hashchange", function() {
 
 // Fetch product data
 function fetchdataproduct(){
-  fetch('https://gohub-b49c.restdb.io/rest/product?key=3d05b2dcad1a8586d19bc0f2f303e5061387d').then(function(response) {
+  fetch('https://gohub-b49c.restdb.io/rest/product', {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d'
+    }
+  })
+  .then(function(response) {
       pdata = response.json();
       return pdata;
   })
@@ -177,24 +184,31 @@ function fetchdataproduct(){
 
 // Show product list
 function listproduct(pdata) {
-  let product = pdata.product;
+  let product = pdata;
   for (i = 0; i < product.length; i++ ) {
     let stt = i + 1;
-    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + product[i].id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + product[i].name + "</td><td>" + product[i].description + "</td><td>" + "<img width='100px' src=" + product[i].image + ">" + "</td><td>" + product[i].active +"</td></tr></table>";
+    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + product[i]._id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + product[i].name + "</td><td>" + product[i].description + "</td><td>" + "<img width='100px' src=https://saigonsouvenir.com/media/" + product[i].image + ">" + "</td><td>" + product[i].active +"</td></tr></table>";
   }
 }
 
 //Edit Product
 function editproduct(id){
-  fetch(`https://api.npoint.io/fcbb98d5808c4aa93b64/product/${(id-1)}`).then(function(response) {
+  fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d'
+    }
+}).then(function(response) {
       pdata = response.json();
       return pdata;
   })
   .then(function(pdata) {
       console.log(pdata);
-      document.getElementById('product-id').value = pdata.id;
+      document.getElementById('product-id').value = pdata._id;
       document.getElementById('product-name').value = pdata.name;
       document.getElementById('product-des').value = pdata.description;
+      document.getElementById('product-image').value = pdata.image;
       document.getElementById('product-active').value = pdata.active;
 
       if (pdata.active == true) {
@@ -214,14 +228,37 @@ function updateproduct(){
       "active": document.getElementById('product-active').checked
       }
   
-fetch(`https://api.npoint.io/fcbb98d5808c4aa93b64/product/${id-1}`, { 
+fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, { 
     method: "PATCH",
     body: JSON.stringify(_editdata),
-    //headers: {"Content-type": "application/json; charset=UTF-8"}
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d'
+    }
   })
   .then(response => response.json()) 
   .then(json => console.log(json));
 
-  //alert('Successfully Updated Product');
-  //location.reload();
+  alert('Successfully Updated Product');
+  location.reload();
+}
+
+function newimage(){
+  let formdata = new FormData();
+  let files = document.getElementById('file1').files;
+  let file = files[0];
+  let name = files[0].name;
+  formdata.append('myfile', file, name);
+
+  fetch('https://gohub-b49c.restdb.io/media', {
+    method: "POST",
+    data: formdata,
+    contentType: false,
+    headers: {
+      'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d'
+  }
+  })
+  .then(function (response) {
+    console.log(response)
+  })
 }

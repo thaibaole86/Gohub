@@ -40,7 +40,13 @@ window.addEventListener("hashchange", function() {
 
 // Fetch API Data Products
 function fetchdataproduct(){
-    fetch('https://heuristic-volhard-2380aa.netlify.app/json/product.json').then(function(response) {
+    fetch('https://gohub-b49c.restdb.io/rest/product', {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+          'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d'
+        }
+    }).then(function(response) {
         productdata = response.json();
         return productdata;
     })
@@ -51,15 +57,15 @@ function fetchdataproduct(){
 // Function hiện Sản phẩm
 
 function addsanpham(productdata) {
-    let sanpham = productdata.product;
+    let sanpham = productdata;
     for (i = 0; i< sanpham.length; i++) {       
         if (sanpham[i].active == true) {
-        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].image + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i].id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
+        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=https://saigonsouvenir.com/media/" + sanpham[i].image + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i]._id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
         
         let goicuoc = sanpham[i].data;
         for (j = 0; j < goicuoc.length; j++) {
-        let dataoptions = 'data-options-' + sanpham[i].id; 
-        document.getElementById(dataoptions).innerHTML += "<input type='radio' class='data-item'>" + goicuoc[j].package + " - " + goicuoc[j].price + "$" + "</span>" ;
+        let dataoptions = 'data-package-' + sanpham[i]._id; 
+        document.getElementById(dataoptions).innerHTML += "<span>" + goicuoc[j].package + " - " + goicuoc[j].price + "$" + "</span>" ;
         }  
 
         }
