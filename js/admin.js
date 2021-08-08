@@ -165,7 +165,7 @@ window.addEventListener("hashchange", function() {
 
 // Fetch product data
 function fetchdataproduct(){
-  fetch('https://heuristic-volhard-2380aa.netlify.app/json/product.json').then(function(response) {
+  fetch('https://gohub-b49c.restdb.io/rest/product?key=3d05b2dcad1a8586d19bc0f2f303e5061387d').then(function(response) {
       pdata = response.json();
       return pdata;
   })
