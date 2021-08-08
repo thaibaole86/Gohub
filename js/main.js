@@ -56,11 +56,11 @@ function addsanpham(productdata) {
         if (sanpham[i].active == true) {
         document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].image + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i].id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
         
-        // let goicuoc = sanpham[i].fields;
-        //for (j = 0; j < goicuoc['Name (from dataOption)'].length; j++) {
-        //    let dataoptions = 'data-options-' + sanpham[i].id; 
-        //    document.getElementById(dataoptions).innerHTML += goicuoc['Name (from dataOption)'] + " / " + goicuoc['Price (from dataOption)'];
-        //}  
+        let goicuoc = sanpham[i].data;
+        for (j = 0; j < goicuoc.length; j++) {
+        let dataoptions = 'data-options-' + sanpham[i].id; 
+        document.getElementById(dataoptions).innerHTML += goicuoc[j].package + " - " + goicuoc[j].price + "$" + "<br>" ;
+        }  
 
         }
         
