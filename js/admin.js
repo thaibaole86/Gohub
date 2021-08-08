@@ -187,7 +187,7 @@ function listproduct(pdata) {
   let product = pdata;
   for (i = 0; i < product.length; i++ ) {
     let stt = i + 1;
-    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + product[i]._id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + product[i].name + "</td><td>" + product[i].description + "</td><td>" + "<img width='100px' src=https://saigonsouvenir.com/media/" + product[i].image + ">" + "</td><td>" + product[i].active +"</td></tr></table>";
+    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + product[i]._id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + product[i].name + "</td><td>" + product[i].description + "</td><td>" + "<img width='100px' src=" + product[i].imageurl + ">" + "</td><td>" + product[i].active +"</td></tr></table>";
   }
 }
 
@@ -205,11 +205,14 @@ function editproduct(id){
   })
   .then(function(pdata) {
       console.log(pdata);
+      let packagedata = pdata.data;
+      console.log(packagedata);
       document.getElementById('product-id').value = pdata._id;
       document.getElementById('product-name').value = pdata.name;
       document.getElementById('product-des').value = pdata.description;
-      document.getElementById('product-image').value = pdata.image;
       document.getElementById('product-active').value = pdata.active;
+      document.getElementById('product-image').value = pdata.imageurl;
+      document.getElementById('thumbnail-preview').innerHTML = "<img width='400px' src=" + pdata.imageurl + ">"
 
       if (pdata.active == true) {
         document.getElementById('product-active').checked = true
@@ -217,6 +220,13 @@ function editproduct(id){
       else if (pdata.active == false) {
         document.getElementById('product-active').checked = false
       }
+
+      let sodem = 0;
+      document.getElementById('product-data').innerHTML = "";
+      for (i = 0; i < packagedata.length; i++) {
+        sodem = sodem + 1;
+        document.getElementById('product-data').innerHTML += "<div> Option"+ (sodem) + " : <input class='input is-small small-input-option' value=" + packagedata[i].package + "> <input class='input is-small small-input-option' value=" + packagedata[i].price + ">" + "</div>";
+      }  
       });
 }
 
@@ -225,7 +235,8 @@ function updateproduct(){
   let _editdata = {
       "name": document.getElementById('product-name').value,
       "description": document.getElementById('product-des').value,
-      "active": document.getElementById('product-active').checked
+      "active": document.getElementById('product-active').checked,
+      "imageurl": document.getElementById('product-image').value
       }
   
 fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, { 
@@ -243,22 +254,91 @@ fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, {
   location.reload();
 }
 
-function newimage(){
-  let formdata = new FormData();
-  let files = document.getElementById('file1').files;
-  let file = files[0];
-  let name = files[0].name;
-  formdata.append('myfile', file, name);
+//Function of Add Menu & Edit Menu Buttons
+function toogleEditButton(){
+  let editproduct = document.getElementById('product-detail');
+  let productlisting = document.getElementById('product-listing');
+  let newproduct = document.getElementById('new-product-detail');
+  editproduct.classList.remove("hidden");
+  productlisting.classList.remove("hidden");
+  newproduct.classList.add("hidden");
+}
 
-  fetch('https://saigonsouvenir.com/media', {
+function toogleNewButton(){
+  let editproduct = document.getElementById('product-detail');
+  let newproduct = document.getElementById('new-product-detail');
+  let productlisting = document.getElementById('product-listing');
+  newproduct.classList.remove("hidden");
+  editproduct.classList.add("hidden");
+  productlisting.classList.add("hidden");
+}
+
+//Create new product
+function newproduct(){
+  let newname = document.getElementById('new-product-name').value;
+  let newdes = document.getElementById('new-product-des').value;
+  let newimage = document.getElementById('new-product-image').value;
+  let newactive = document.getElementById('new-product-active').checked;
+
+  let _newdata = {
+    "name": newname,
+    "description": newdes,
+    "active": newactive,
+    "imageurl": newimage,
+    "data": datapackages
+    }
+
+  fetch('https://gohub-b49c.restdb.io/rest/product', {
+    method: "POST",
+    body: JSON.stringify(_newdata),
     headers: {
-      'x-apikey': '610fb14469fac573b50a5331',
+      'Content-Type': 'application/json',
+      'x-apikey': '610fb14469fac573b50a5331'
+    }
+  })
+  .then(response => response.json()) 
+  .then(json => console.log(json));
 
-  },
-    method: 'POST',
-    data: formdata
+  alert('Successfully Added Product');
+  location.reload();
+
+}
+
+let datapackages = [];
+function addDataOption(){
+  document.getElementById('new-product-data').innerHTML = " ";
+  newdatavalue = document.getElementById('newdatavalue').value;
+  newdataprice = document.getElementById('newdataprice').value;
+  newdata = {
+    "package": newdatavalue,
+    "price": newdataprice
+  }
+  datapackages.push(newdata)
+
+  for (i = 0; i < datapackages.length; i++) {
+    document.getElementById('new-product-data').innerHTML += "<div>" + datapackages[i].package + " | " + datapackages[i].price + "$ " + "</div>";
+  }  
+
+}
+
+//Delete product instantly
+function deleteproduct(){
+  let id = document.getElementById('product-id').value;
+  if (id == "") {
+    alert('Please choose product first');
+    return;
+  }
+
+  fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, { 
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '610fb14469fac573b50a5331'
+    }
   })
-  .then(function (response) {
-    console.log(response)
-  })
+  .then(response => response.json()) 
+  .then(json => console.log(json));
+
+  alert('Successfully Deleted Product');
+  location.reload();
 }

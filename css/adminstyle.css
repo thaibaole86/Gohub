@@ -92,3 +92,15 @@ tr:hover ion-icon {
 tr:hover, tr:nth-child(even):hover {
     background-color: blanchedalmond;
 }
+
+.hidden {
+    display: none !important;
+}
+
+.display {
+    display:initial !important;
+}
+
+.small-input-option {
+    width: 15% !important;
+}

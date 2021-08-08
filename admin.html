@@ -32,7 +32,7 @@
         <ul class="menu-list">
           <li><a href="#menu">Menus</a></li>
           <li><a href="#product">Products</a></li>
-          <li><a href="#media">Media</a></li>
+          <li><a href="#blog">Blogs</a></li>
         </ul>
       </aside> 
       </div>
@@ -85,66 +85,102 @@
             </div>
           </div>
         </div>
-
         <div id="#product">
         <div class="columns">
           <div class="column">
-          <p class="title is-4">Manage Products</p>
-          <div id="product-listing" class="box">
-            <p class="subtitle is-5">Current Products</p>
-            <table id="product-table" >
-              <th></th>
-              <th></th>
-              <th>ID</th>
-              <th>Product Name</th>
-              <th>Product Description</th>
-              <th>Product Feature Image</th>
-              <th>Active</th>
-            <tbody id="product-list">
-            </tbody>
-            </table>
+            <p class="title is-4">Manage Products</p>
+            <button class="button is-primary" onclick="toogleNewButton()">Add New Product</button>
+            <button class="button" onclick="toogleEditButton()">Edit Current Product</button>
+            <br>
+            <br>
+            <div id="product-listing" class="box hidden">
+              <p class="subtitle is-5">Current Products</p>
+              <table id="product-table" >
+                <th></th>
+                <th></th>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Product Description</th>
+                <th>Product Feature Image</th>
+                <th>Active</th>
+              <tbody id="product-list">
+              </tbody>
+              </table>
+            </div>
+        
+            <div id="product-detail" class="box hidden">
+              <p class="subtitle is-5">Edit Product  Detail</p>
+              <label class="label">Product ID</label>
+              <input class="input" id="product-id" disabled>
+              <br>
+              <br>
+              <label class="label">Product Image</label>
+              <div id="thumbnail-preview"></div>
+              <input class="input" id="product-image">
+              <br>
+              <br>
+              <label class="label">Product Name</label>
+              <input class="input" id="product-name">
+              <br>
+              <br>
+              <label class="label">Product Description</label>
+              <textarea class="textarea" id="product-des"> </textarea>
+              <br>
+              <label class="label">Product Data Option</label>
+              <div id="product-data"></div>
+              <br>
+              <input id="product-active" type="checkbox">
+              <label >Tick to make the product active!</label>
+              <br>
+              <br>
+              <button class="button is-primary" onclick="updateproduct()">Update Product</button>
+              <button class="button is-danger" onclick="deleteproduct()">Delete Product</button>
+            </div>
+            <div id="new-product-detail" class="box hidden">
+              <p class="subtitle is-5">New Product  Detail</p>
+              <label class="label">Product ID</label>
+              <input class="input" id="new-product-id" disabled>
+              <br>
+              <br>
+              <label class="label">Product Image</label>
+              <input class="input" id="new-product-image" placeholder="Please enter URL format">
+              <br>
+              <br>
+              <label class="label">Product Name</label>
+              <input class="input" id="new-product-name">
+              <br>
+              <br>
+              <label class="label">Product Description</label>
+              <textarea class="textarea" id="new-product-des"> </textarea>
+              <br>
+              <label class="label">Product Data Option</label>
+              <input class="input is-small small-input-option" placeholder="Data Package" id="newdatavalue">
+              <input class="input is-small small-input-option" placeholder="Data Price" id="newdataprice">
+              <button class="button is-small" onclick="addDataOption()">Add Data Option</button>
+              <br>
+              <div id="new-product-data"></div>
+              <br>
+              <input id="new-product-active" type="checkbox">
+              <label >Tick to make the product active!</label>
+              <br>
+              <br>
+              <button class="button is-primary" onclick="newproduct()">Create New Product</button>
+              
+            </div>
+            </div>
+          
+            
+          
           </div>
 
-          <div id="product-detail" class="box">
-            <p class="subtitle is-5">Edit Product  Detail</p>
-            <label class="label">Product ID</label>
-            <input class="input" id="product-id" disabled>
-            <br>
-            <br>
-            <label class="label">Product Image</label>
-            <input class="input" id="product-image">
-            <br>
-            <br>
-            <p><input type="file" name="file1" id="file1">	
-              <p><button id="uploadButton" type="button" onclick="newimage()">Upload New Image</button>
-            <br>
-            <br>
-            <label class="label">Product Name</label>
-            <input class="input" id="product-name">
-            <br>
-            <br>
-            <label class="label">Product Description</label>
-            <textarea class="textarea" id="product-des"> </textarea>
-            <input id="product-active" type="checkbox">
-            <label >Active?</label>
-            <br>
-            <button class="button is-primary" onclick="updateproduct()">Update</button>
-          </div>
-          </div>
         </div>
-      </div>
+        </div>
+      
     
-        <div id="#media">
-          Test
-        </div>
     
       </div>
     </div>
-
   </div>
-
-  
-
 </div>
 
 </body>

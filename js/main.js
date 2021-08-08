@@ -60,13 +60,13 @@ function addsanpham(productdata) {
     let sanpham = productdata;
     for (i = 0; i< sanpham.length; i++) {       
         if (sanpham[i].active == true) {
-        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=https://saigonsouvenir.com/media/" + sanpham[i].image + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i]._id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
+        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].imageurl + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i]._id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
         
-        let goicuoc = sanpham[i].data;
-        for (j = 0; j < goicuoc.length; j++) {
-        let dataoptions = 'data-package-' + sanpham[i]._id; 
-        document.getElementById(dataoptions).innerHTML += "<span>" + goicuoc[j].package + " - " + goicuoc[j].price + "$" + "</span>" ;
-        }  
+        //let goicuoc = sanpham[i].data;
+        //for (j = 0; j < goicuoc.length; j++) {
+        //let dataoptions = 'data-package-' + sanpham[i]._id; 
+        //document.getElementById(dataoptions).innerHTML += "<span>" + goicuoc[j].package + " - " + goicuoc[j].price + "$" + "</span>" ;
+        //}  
 
         }
         
