@@ -169,7 +169,7 @@ function fetchdataproduct(){
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
-      'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d'
+      'x-apikey': '610fb14469fac573b50a5331'
     }
   })
   .then(function(response) {
@@ -197,7 +197,7 @@ function editproduct(id){
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
-      'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d'
+      'x-apikey': '610fb14469fac573b50a5331'
     }
 }).then(function(response) {
       pdata = response.json();
@@ -233,7 +233,7 @@ fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, {
     body: JSON.stringify(_editdata),
     headers: {
       'Content-Type': 'application/json',
-      'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d'
+      'x-apikey': '610fb14469fac573b50a5331'
     }
   })
   .then(response => response.json()) 
@@ -250,17 +250,13 @@ function newimage(){
   let name = files[0].name;
   formdata.append('myfile', file, name);
 
-  fetch('https://gohub-b49c.restdb.io/media', {
-    method: "POST",
-    data: formdata,
-    contentType: false,
-    url: "https://gohub-b49c.restdb.io/media",
+  fetch('https://saigonsouvenir.com/media', {
     headers: {
-      'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d',
-      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': ' Origin, Content-Type, X-Auth-Token',
-      'Access-Control-Allow-Origin': '*'
-  }
+      'x-apikey': '610fb14469fac573b50a5331',
+
+  },
+    method: 'POST',
+    data: formdata
   })
   .then(function (response) {
     console.log(response)
