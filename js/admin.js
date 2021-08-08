@@ -250,11 +250,11 @@ function newimage(){
   let name = files[0].name;
   formdata.append('myfile', file, name);
 
-  fetch('https://saigonsouvenir.com/media', {
+  fetch('https://gohub-b49c.restdb.io/media', {
     method: "POST",
     data: formdata,
     contentType: false,
-    url: "https://saigonsouvenir.com/media",
+    url: "https://gohub-b49c.restdb.io/media",
     headers: {
       'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d',
       'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
