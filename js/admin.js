@@ -165,7 +165,7 @@ window.addEventListener("hashchange", function() {
 
 // Fetch product data
 function fetchdataproduct(){
-  fetch('https://api.npoint.io/2415f0e6c0284935cc16/product/').then(function(response) {
+  fetch('https://api.npoint.io/fcbb98d5808c4aa93b64/product/').then(function(response) {
       pdata = response.json();
       return pdata;
   })
@@ -186,7 +186,7 @@ function listproduct(pdata) {
 
 //Edit Product
 function editproduct(id){
-  fetch(`https://api.npoint.io/2415f0e6c0284935cc16/product/${(id-1)}`).then(function(response) {
+  fetch(`https://api.npoint.io/fcbb98d5808c4aa93b64/product/${(id-1)}`).then(function(response) {
       pdata = response.json();
       return pdata;
   })
@@ -214,13 +214,14 @@ function updateproduct(){
       "active": document.getElementById('product-active').checked
       }
   
-fetch(`https://api.npoint.io/2415f0e6c0284935cc16/product/${id-1}`, { 
+fetch(`https://api.npoint.io/fcbb98d5808c4aa93b64/product/${id-1}`, { 
     method: "PATCH",
     body: JSON.stringify(_editdata),
-    headers: {"Content-type": "application/json; charset=UTF-8"}
+    //headers: {"Content-type": "application/json; charset=UTF-8"}
   })
   .then(response => response.json()) 
   .then(json => console.log(json));
 
-
+  //alert('Successfully Updated Product');
+  //location.reload();
 }
