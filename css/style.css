@@ -284,6 +284,13 @@ header button:hover, .cta-button:hover {
     width: 100%;
 }
 
+.data-item {
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-right: 5px;
+    padding:5px;
+}
+
 .product-button {
     margin-top: 10px;
     padding-top: 8px;

@@ -171,7 +171,7 @@ function fetchdataproduct(){
   })
   .then(function(pdata) {
       listproduct(pdata)
-      console.log(pdata.records.length);
+      console.log(pdata.length);
       });
 }
 
@@ -180,27 +180,27 @@ function listproduct(pdata) {
   let product = pdata;
   for (i = 0; i < product.length; i++ ) {
     let stt = i + 1;
-    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + product[i].id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + product[i].name + "</td><td>" + product[i].description + "</td><td>" + "<img src=" + product[i].image + ">" + "</td><td>" + product[i].active +"</td></tr></table>";
+    document.getElementById('product-list').innerHTML += "<table><tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + product[i].id + "></ion-icon></center></td><td>"  + "</td><td>" + stt + "</td><td>" + product[i].name + "</td><td>" + product[i].description + "</td><td>" + "<img width='100px' src=" + product[i].image + ">" + "</td><td>" + product[i].active +"</td></tr></table>";
   }
 }
 
 //Edit Product
 function editproduct(id){
-  fetch(`https://api.airtable.com/v0/appJuih6tuaTappGZ/menu/${id}?api_key=keySoD6lDEycOXqdZ`).then(function(response) {
+  fetch(`https://api.npoint.io/2415f0e6c0284935cc16/product/${(id-1)}`).then(function(response) {
       pdata = response.json();
       return pdata;
   })
   .then(function(pdata) {
       console.log(pdata);
       document.getElementById('product-id').value = pdata.id;
-      document.getElementById('product-name').value = pdata.fields.productName;
-      document.getElementById('product-des').value = pdata.fields.productDescription;
-      document.getElementById('product-active').value = pdata.fields.Active;
+      document.getElementById('product-name').value = pdata.name;
+      document.getElementById('product-des').value = pdata.description;
+      document.getElementById('product-active').value = pdata.active;
 
-      if (pdata.fields.Active == true) {
+      if (pdata.active == true) {
         document.getElementById('product-active').checked = true
       }
-      else if (pdata.fields.Active == false) {
+      else if (pdata.active == false) {
         document.getElementById('product-active').checked = false
       }
       });
@@ -209,14 +209,12 @@ function editproduct(id){
 function updateproduct(){
   let id = document.getElementById('product-id').value;
   let _editdata = {
-    "fields": {
-      "productName": document.getElementById('product-name').value,
-      "productDescription": document.getElementById('product-des').value,
-      "Active": document.getElementById('product-active').checked
-        }
+      "name": document.getElementById('product-name').value,
+      "description": document.getElementById('product-des').value,
+      "active": document.getElementById('product-active').checked
       }
   
-fetch(`https://api.airtable.com/v0/appJuih6tuaTappGZ/products/${id}?api_key=keySoD6lDEycOXqdZ`, { 
+fetch(`https://api.npoint.io/2415f0e6c0284935cc16/product/${id-1}`, { 
     method: "PATCH",
     body: JSON.stringify(_editdata),
     headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -224,6 +222,5 @@ fetch(`https://api.airtable.com/v0/appJuih6tuaTappGZ/products/${id}?api_key=keyS
   .then(response => response.json()) 
   .then(json => console.log(json));
 
-  alert('Successfully Updated Product');
-  location.reload();
+
 }
