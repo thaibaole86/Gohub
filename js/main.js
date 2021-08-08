@@ -40,7 +40,7 @@ window.addEventListener("hashchange", function() {
 
 // Fetch API Data Products
 function fetchdataproduct(){
-    fetch('https://api.npoint.io/2415f0e6c0284935cc16/product/').then(function(response) {
+    fetch('https://heuristic-volhard-2380aa.netlify.app/json/product.json').then(function(response) {
         productdata = response.json();
         return productdata;
     })
