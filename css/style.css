@@ -112,6 +112,7 @@ header button:hover, .cta-button:hover {
 
 #main-body-display {
     background-color:#FFF0E5;
+    min-height: 100vh;
 }
 
 #banner-container {
@@ -329,4 +330,23 @@ header button:hover, .cta-button:hover {
     color: white;
     border: 0px solid rgb(211, 211, 211);
     cursor: pointer;
+}
+
+.data-item {
+    margin-right: 8px;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #05b5dc;
+    border-color: #05b5dc;
+}  
+
+.data-item:hover {
+    color: white;
+    background-color: #05b5dc;
+    border-color: #05b5dc;
+    cursor: pointer;
+}
+
+.data-button {
+    margin-bottom: 10px;
 }

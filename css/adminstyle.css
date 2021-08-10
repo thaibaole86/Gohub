@@ -102,5 +102,15 @@ tr:hover, tr:nth-child(even):hover {
 }
 
 .small-input-option {
-    width: 15% !important;
+    width: 20% !important;
+}
+
+.data-item {
+    margin-right: 10px;
+    margin-top: 10px;
+
+}    
+
+#product-detail, #new-product-detail {
+    width: 100%
 }

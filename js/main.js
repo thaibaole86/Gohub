@@ -4,7 +4,13 @@ window.addEventListener('load', displayHash);
 
 // Fetch API Data Menu
 function fetchdatamenu(){
-    fetch('https://api.airtable.com/v0/appJuih6tuaTappGZ/menu?sort%5B0%5D%5Bfield%5D=id&sort%5B0%5D%5Bdirection%5D=asc&api_key=keySoD6lDEycOXqdZ').then(function(response) {
+    fetch('https://gohub-b49c.restdb.io/rest/menu', {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+          'x-apikey': '610fb14469fac573b50a5331'
+        }
+    }).then(function(response) {
         data = response.json();
         return data;
     })
@@ -14,9 +20,9 @@ function fetchdatamenu(){
 }
 
 function addmenu(data) {
-    let menu = data.records;
+    let menu = data;
     for (i = 0; i < menu.length; i++ ) {
-        document.getElementById('menu-items').innerHTML += "<li><a href=" + menu[i].fields.menuUrl + ">" + menu[i].fields.menuTitle + "</a></li>"
+        document.getElementById('menu-items').innerHTML += "<li><a href=" + menu[i].menuUrl + ">" + menu[i].menuTitle + "</a></li>"
     }
 }
 
@@ -60,13 +66,13 @@ function addsanpham(productdata) {
     let sanpham = productdata;
     for (i = 0; i< sanpham.length; i++) {       
         if (sanpham[i].active == true) {
-        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].imageurl + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div id='data-package-" + sanpham[i]._id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
+        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].imageurl + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div class='data-button' id='data-package-" + sanpham[i]._id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
         
-        //let goicuoc = sanpham[i].data;
-        //for (j = 0; j < goicuoc.length; j++) {
-        //let dataoptions = 'data-package-' + sanpham[i]._id; 
-        //document.getElementById(dataoptions).innerHTML += "<span>" + goicuoc[j].package + " - " + goicuoc[j].price + "$" + "</span>" ;
-        //}  
+        let goicuoc = sanpham[i].data;
+        for (j = 0; j < goicuoc.length; j++) {
+        let dataoptions = 'data-package-' + sanpham[i]._id; 
+        document.getElementById(dataoptions).innerHTML += "<span class='tag data-item'>" + goicuoc[j].package + " - " + goicuoc[j].price + "$" + "</span>" ;
+        }  
 
         }
         
