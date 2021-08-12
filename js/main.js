@@ -4,6 +4,8 @@ window.addEventListener('load', displayHash);
 
 // Fetch API Data Menu
 function fetchdatamenu(){
+    let myHeaders = new Headers();
+    myHeaders.append('x-apikey', '610fb14469fac573b50a5331');
     fetch('https://gohub-b49c.restdb.io/rest/menu', {
         method: "GET",
         headers: {
@@ -66,7 +68,7 @@ function addsanpham(productdata) {
     let sanpham = productdata;
     for (i = 0; i< sanpham.length; i++) {       
         if (sanpham[i].active == true) {
-        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].imageurl + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div class='data-button' id='data-package-" + sanpham[i]._id +  "' ></div>" + "<div id='data-options-" + sanpham[i].id + "'></div>" + "<button class='product-button'> Buy Now </button>" + "</div>";   
+        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].imageurl + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div class='data-button' id='data-package-" + sanpham[i]._id +  "' ></div>" + sanpham[i].buybutton;   
         
         let goicuoc = sanpham[i].data;
         for (j = 0; j < goicuoc.length; j++) {
