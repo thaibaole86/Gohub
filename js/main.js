@@ -66,15 +66,10 @@ function fetchdataproduct(){
 
 function addsanpham(productdata) {
     let sanpham = productdata;
+    document.getElementById('product-name').innerHTML = ""
     for (i = 0; i< sanpham.length; i++) {       
         if (sanpham[i].active == true) {
-        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].imageurl + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<div class='data-button' id='data-package-" + sanpham[i]._id +  "' ></div>" + sanpham[i].buybutton;   
-        
-        let goicuoc = sanpham[i].data;
-        for (j = 0; j < goicuoc.length; j++) {
-        let dataoptions = 'data-package-' + sanpham[i]._id; 
-        document.getElementById(dataoptions).innerHTML += "<span class='tag data-item'>" + goicuoc[j].package + " - " + goicuoc[j].price + "$" + "</span>" ;
-        }  
+        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].imageurl + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<span class='tag'>" + sanpham[i].price + " $ / month </span>" + "<button class='product-button snipcart-add-item' data-item-id=" + sanpham[i].id + " data-item-price=" + sanpham[i].price + " data-item-description=" + "'" + sanpham[i].description + "'" + " data-item-url='https://saigonsouvenir.com/rest/product/" + sanpham[i]._id + "?apikey=610fb14469fac573b50a5331' data-item-name='" + sanpham[i].name + "'> Add to cart </button>"
 
         }
         

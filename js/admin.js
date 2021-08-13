@@ -228,6 +228,7 @@ function editproduct(id){
       document.getElementById('product-des').value = pdata.description;
       document.getElementById('product-active').value = pdata.active;
       document.getElementById('product-image').value = pdata.imageurl;
+      document.getElementById('product-price').value = pdata.price;
       document.getElementById('thumbnail-preview').innerHTML = "<img width='30%' src=" + pdata.imageurl + ">"
 
       if (pdata.active == true) {
@@ -236,11 +237,6 @@ function editproduct(id){
       else if (pdata.active == false) {
         document.getElementById('product-active').checked = false
       }
-
-      for (i = 0; i < packagedata.length; i++) {
-        productDataOption.push({"price": packagedata[i].price, "package":packagedata[i].package})
-      }
-      renderDataOption()
      
       });
 }
@@ -270,7 +266,7 @@ function updateproduct(){
       "description": document.getElementById('product-des').value,
       "active": document.getElementById('product-active').checked,
       "imageurl": document.getElementById('product-image').value,
-      "data": productDataOption
+      "price": document.getElementById('product-price').value
       }
   
 fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, { 
@@ -313,13 +309,14 @@ function newproduct(){
   let newdes = document.getElementById('new-product-des').value;
   let newimage = document.getElementById('new-product-image').value;
   let newactive = document.getElementById('new-product-active').checked;
+  let newprice = document.getElementById('new-product-price').value;
 
   let _newdata = {
     "name": newname,
     "description": newdes,
     "active": newactive,
     "imageurl": newimage,
-    "data": datapackages
+    "price": newprice
     }
 
   fetch('https://gohub-b49c.restdb.io/rest/product', {
