@@ -229,6 +229,7 @@ function editproduct(id){
       document.getElementById('product-active').value = pdata.active;
       document.getElementById('product-image').value = pdata.imageurl;
       document.getElementById('product-price').value = pdata.price;
+      document.getElementById('product-sku').value = pdata.id;
       document.getElementById('thumbnail-preview').innerHTML = "<img width='30%' src=" + pdata.imageurl + ">"
 
       if (pdata.active == true) {
@@ -266,7 +267,8 @@ function updateproduct(){
       "description": document.getElementById('product-des').value,
       "active": document.getElementById('product-active').checked,
       "imageurl": document.getElementById('product-image').value,
-      "price": document.getElementById('product-price').value
+      "price": document.getElementById('product-price').value,
+      "id":document.getElementById('product-sku').value
       }
   
 fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, { 
@@ -310,13 +312,15 @@ function newproduct(){
   let newimage = document.getElementById('new-product-image').value;
   let newactive = document.getElementById('new-product-active').checked;
   let newprice = document.getElementById('new-product-price').value;
+  let newsku = document.getElementById('new-product-sku').value;
 
   let _newdata = {
     "name": newname,
     "description": newdes,
     "active": newactive,
     "imageurl": newimage,
-    "price": newprice
+    "price": newprice,
+    "id": newsku
     }
 
   fetch('https://gohub-b49c.restdb.io/rest/product', {
