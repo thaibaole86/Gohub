@@ -283,6 +283,7 @@ header button:hover, .cta-button:hover {
 
 .product-image {
     width: 100%;
+    height: 200px;
 }
 
 .data-item {
