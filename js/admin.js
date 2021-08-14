@@ -1,9 +1,14 @@
 let latestmenuid;
 window.addEventListener('load', displayHash);
+// Mỗi lần # trên URL thay đổi thì chạy lại lệnh displayHash
+window.addEventListener("hashchange", function() {
+  console.log("hashchange event");
+  displayHash();
+});
 ///////////////////////////////////////// MENU PAGE ////////////////////////////////
 // Fetch API Data Menu
 function fetchdatamenu(){
-  fetch('https://gohub-b49c.restdb.io/rest/menu', {
+  fetch('https://gohub-b49c.restdb.io/rest/menu?q={}&h={%22$orderby%22:%20{%22id%22:%201}}', {
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +28,7 @@ function listmenu(data) {
   let menu = data;
   for (i = 0; i < menu.length; i++ ) {
     let stt = i + 1;
-    document.getElementById('menulist').innerHTML += "<table><tr>" + "<td>" + stt  + "</td><td><ion-icon name='create-outline' onclick='editmenuinstant(this.id)'" + " id=" + menu[i]._id + "></ion-icon>  " + menu[i].menuTitle + "</td><td><ion-icon name='create-outline' onclick='editurlinstant(this.id)'" + " id=" + menu[i]._id + "></ion-icon>  " + menu[i].menuUrl + "</td><td><ion-icon name='caret-down-outline' onclick='editpositioninstantup(this.id)'" + " id=" + menu[i]._id + "></ion-icon>" + "<span id='menuposition-" + menu[i]._id + "'> " + menu[i].id + "</span>" + "<ion-icon name='caret-up-outline' onclick='editpositioninstantdown(this.id)'" + " id=" + menu[i]._id + "></ion-icon>"  + "</td>" + "<td><ion-icon name='trash-outline' onclick='deletemenuinstant(this.id)'"  + " id=" + menu[i]._id + "></ion-icon></td>" + "</tr></table>";
+    document.getElementById('menulist').innerHTML += "<table><tr>" + "<td>" + stt  + "</td><td><ion-icon name='create-outline' onclick='editmenuinstant(this.id)'" + " id=" + menu[i]._id + "></ion-icon>  " + menu[i].menuTitle + "</td><td><ion-icon name='create-outline' onclick='editurlinstant(this.id)'" + " id=" + menu[i]._id + "></ion-icon>  " + menu[i].menuUrl + "</td><td><ion-icon name='caret-down-outline' onclick='editpositioninstantup(this.id)'" + " id=" + menu[i]._id + "></ion-icon>" + "<span id='menuposition-" + menu[i]._id + "'>" + menu[i].id + "</span>" + "<ion-icon name='caret-up-outline' onclick='editpositioninstantdown(this.id)'" + " id=" + menu[i]._id + "></ion-icon>"  + "</td>" + "<td><ion-icon name='trash-outline' onclick='deletemenuinstant(this.id)'"  + " id=" + menu[i]._id + "></ion-icon></td>" + "</tr></table>";
     }
 }
 
@@ -116,8 +121,9 @@ function editmenuinstant(id){
 function editpositioninstantup(id){
   let position = 'menuposition-' + id;
   let currentposition = parseInt(document.getElementById(position).innerHTML);
+  let newposition = currentposition + 1;
   let _editdata = {
-    "id": currentposition + 1
+    "id": newposition
   }
       
   fetch(`https://gohub-b49c.restdb.io/rest/menu/${id}`, { 
@@ -130,15 +136,17 @@ function editpositioninstantup(id){
   })
   .then(response => response.json()) 
   .then(json => console.log(json));
-  alert('Successfully Edited New Menu Position');
+  document.getElementById(position).innerHTML = newposition;
+  alert('Successfully Adjusted Item Position');
   location.reload();
   }
 
 function editpositioninstantdown(id){
   let position = 'menuposition-' + id;
   let currentposition = parseInt(document.getElementById(position).innerHTML);
+  let newposition = currentposition - 1;
   let _editdata = {
-    "id": currentposition - 1
+    "id": newposition
       };
 
   fetch(`https://gohub-b49c.restdb.io/rest/menu/${id}`, { 
@@ -151,7 +159,8 @@ function editpositioninstantdown(id){
   })
   .then(response => response.json()) 
   .then(json => console.log(json));
-  alert('Successfully Edited New Menu Position');
+  document.getElementById(position).innerHTML = newposition;
+  alert('Successfully Adjusted Item Position');
   location.reload();
   }
 
@@ -165,15 +174,14 @@ function editpositioninstantdown(id){
     if ((theHash == "#product")) {
     fetchdataproduct();
     }
+    if (theHash == "#blog") {
+      loadeditor()
+    }
       let pagecontentload = document.getElementById("admin-display");
       pagecontentload.innerHTML = document.getElementById(theHash).innerHTML;
   }
 
-  // Mỗi lần # trên URL thay đổi thì chạy lại lệnh displayHash
-window.addEventListener("hashchange", function() {
-    console.log("hashchange event");
-    displayHash();
-  });
+
 
 ///////////////////////////////////////// PRODUCT PAGE ////////////////////////////////
 
@@ -376,4 +384,18 @@ function deleteproduct(){
 
   alert('Successfully Deleted Product');
   location.reload();
+}
+
+function loadeditor() {
+  let quill = new Quill('#newblogcontent', {
+    modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['image', 'code-block']
+    ]
+  },
+  placeholder: 'Compose an epic...',
+  theme: 'snow'  // or 'bubble'
+  });
 }

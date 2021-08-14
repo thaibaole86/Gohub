@@ -1,8 +1,68 @@
-body {
-    margin: 0;
-    height: auto;
+.wrapper {
+    max-width: 960px;
+    margin: auto;
     display: flex;
-    flex-direction: column;
+}
+
+.topbar {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.topbar-right {
+    display: flex;
+}
+
+.topbar-right ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content:flex-end;
+    padding: 0px;
+}
+
+.button {
+    margin-right: 10px;
+}
+
+.logo {
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.is-blue {
+    background-color: #05b5dc;
+}
+
+.is-primary {
+    background-color: #05b5dc !important;
+    color: #fff !important;
+}
+
+.navigation {
+    background-color: #FFF0E5;
+}
+
+.top-bar-button {
+    background-color: transparent;
+}
+
+.top-bar-button:hover {
+    background-color: #05b5dc;
+    color: white;
+    border-color: #05b5dc;
+}
+
+
+.navbar-item a{
+    color: white;
+}
+
+.navbar-item a:hover{
+    border-bottom: 1px solid white;
 }
 
 .hidden {
@@ -13,156 +73,53 @@ body {
     display:inline !important;;
 }
 
-/* Top Bar */
-header {
-    background-color:#05b5dc;
-    color: white;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-
-a ,p , h1, h2, h3, h4, h5, button {
-    font-family: 'Lato', sans-serif;;
-}
-
-.container {
-    width: 60%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    vertical-align: middle;
-}
-
-header button, .cta-button {
-    border-radius: 4px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-right: 15px;
-    padding-left: 15px;
-    background-color: transparent;
-    color: white;
-    border: 2px solid white;
-    cursor: pointer;
-    font-weight: 400px;
-}
-
-header button:hover, .cta-button:hover {
-    border-radius: 4px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-right: 15px;
-    padding-left: 15px;
-    background-color: white;
-    color: #05b5dc;
-    border: 2px solid white;
-    cursor: pointer;
-}
-
-/*End Top Bar */
-
-.navigation {
-    background-color: #FFF0E5;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    padding-top:10px;
-}
-
-.navigation ul {
-    width: 100%;
-    list-style: none;
-    display: flex;
-    justify-content:flex-end;
-    padding: 0px;
-}
-
-.navigation li {
-    padding-left:35px;
-}
-
-.navigation li a {
-    text-decoration: none;  
-    color: black;
-}
-
-.navigation li a:hover {
-    text-decoration: none;  
-    color: #05b5dc;
-    border-bottom: 1px solid #05b5dc;
-}
-
-#menu-items {
-    display: flex;
-    flex-direction: row;
-}
-
-/* Main Body */
-
-.main-body {
-    background-color: white;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#main-body-display {
-    background-color:#FFF0E5;
-    min-height: 100vh;
-}
-
 #banner-container {
-   position:relative
-}
+    position:relative
+ }
+ 
+ #banner-container video {
+     width: 100%;
+     height: auto;
+     vertical-align: middle;
+ }
+ 
+ .banner-overlay {
+     position:absolute;
+     right: 0;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     height: 50%;
+     margin-top: 25px;
+     z-index:2;
+     text-align: center;
+     color: white;
+     justify-content: center;
+     flex-direction: column;
+ }
+ 
+ .video-overlay {
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     top: 0px;
+     left: 0px;
+     background: black;
+     opacity: 0.5;
+ 
+ }
 
-#banner-container video {
-    width: 100%;
-    height: auto;
-    vertical-align: middle;
-}
+ .banner-text {
+    font-size: 50px;
+ }
 
-.banner-overlay {
-    position:absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 50%;
-    margin-top: 25px;
-    z-index:2;
-    text-align: center;
-    color: white;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.video-overlay {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background: black;
-    opacity: 0.5;
-
-}
-
-/* End Main Body */
-
-.footer {
+ .footer {
     background-color: #FFF0E5;
-    border-top: 1px solid black;
     color: black;
-    height: 40px;
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 20px;
     left: 0;
     bottom: 0;
 }
@@ -175,7 +132,6 @@ header button:hover, .cta-button:hover {
 #sign-up {
     width: 100%;
     min-height: 85vh;
-    background-color: #FFF0E5;
     display:flex;
     justify-content: center;
 }
@@ -227,20 +183,15 @@ header button:hover, .cta-button:hover {
 #product-name {
     width: 100%;
     display: flex;
-    margin: 20px;
     height: 100%;
     flex-wrap: wrap; 
     font-family: 'Lato';
-    justify-content: space-evenly;
 }
 
 #product-detail {
-    width: 30%;
     display: inline-block;
-    margin: 10px;
     border: 2px solid #fff;
     background-color: #fff;
-    border-radius: 4px;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
     text-align: center;
     display: flex;
@@ -279,6 +230,8 @@ header button:hover, .cta-button:hover {
 .product-section {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin-bottom: 35px;
 }
 
 .product-image {
@@ -301,9 +254,10 @@ header button:hover, .cta-button:hover {
     padding-left: 15px;
     background-color: white;
     width: 100%;
-    color: white;
-    border: 0px solid rgb(211, 211, 211);
+    color: #05b5dc;
+    border: 1px solid #05b5dc;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .product-title {
@@ -329,7 +283,7 @@ header button:hover, .cta-button:hover {
     padding-left: 15px;
     background-color: #05b5dc;
     color: white;
-    border: 0px solid rgb(211, 211, 211);
+    border: 1px solid rgb(211, 211, 211);
     cursor: pointer;
 }
 
@@ -353,8 +307,19 @@ header button:hover, .cta-button:hover {
 }
 
 
-.tag {
+.tag:not(body) {
     color: #05b5dc;
+    background-color: transparent;
     font-size: 20px;
     margin-bottom: 5px;
+}
+
+.section-heading {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+a {
+    color: #05b5dc;
+    ;
 }

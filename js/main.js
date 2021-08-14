@@ -6,7 +6,7 @@ window.addEventListener('load', displayHash);
 function fetchdatamenu(){
     let myHeaders = new Headers();
     myHeaders.append('x-apikey', '610fb14469fac573b50a5331');
-    fetch('https://gohub-b49c.restdb.io/rest/menu', {
+    fetch('https://gohub-b49c.restdb.io/rest/menu?q={}&h={%22$orderby%22:%20{%22id%22:%201}}', {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ function fetchdatamenu(){
 function addmenu(data) {
     let menu = data;
     for (i = 0; i < menu.length; i++ ) {
-        document.getElementById('menu-items').innerHTML += "<li><a href=" + menu[i].menuUrl + ">" + menu[i].menuTitle + "</a></li>"
+        document.getElementById('menu-items').innerHTML += "<li class='navbar-item'><a href=" + menu[i].menuUrl + ">" + menu[i].menuTitle + "</a></li>"
     }
 }
 
@@ -38,6 +38,8 @@ function displayHash() {
 
     if (theHash == "#products") {fetchdataproduct()}
   }
+
+    
 
   // Mỗi lần # trên URL thay đổi thì chạy lại lệnh displayHash
 window.addEventListener("hashchange", function() {
@@ -69,7 +71,7 @@ function addsanpham(productdata) {
     document.getElementById('product-name').innerHTML = ""
     for (i = 0; i< sanpham.length; i++) {       
         if (sanpham[i].active == true) {
-        document.getElementById('product-name').innerHTML += "<div id='product-detail'>" + "<img class='product-image' src=" + sanpham[i].imageurl + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<span class='tag'>" + sanpham[i].price + " $ / month </span>" + "<button class='product-button snipcart-add-item' data-item-id=" + sanpham[i].id + " data-item-price=" + sanpham[i].price + " data-item-description=" + "'" + sanpham[i].description + "'" + " data-item-url='https://saigonsouvenir.com/rest/product/" + sanpham[i]._id + "?apikey=610fb14469fac573b50a5331' data-item-name='" + sanpham[i].name + "'> Add to cart </button>"
+        document.getElementById('product-name').innerHTML += "<div id='product-detail' class='column is-one-third'>" + "<img class='product-image' src=" + sanpham[i].imageurl + ">" + "<div class='product-title'>" + sanpham[i].name + "</div>" + "<div class='product-description'>" + sanpham[i].description + "</div>" + "<br>" + "<span class='tag'>" + sanpham[i].price + " $ / month </span>" + "<button class='product-button snipcart-add-item' data-item-id=" + sanpham[i].id + " data-item-price=" + sanpham[i].price + " data-item-description=" + "'" + sanpham[i].description + "'" + " data-item-url='https://saigonsouvenir.com/rest/product/" + sanpham[i]._id + "?apikey=610fb14469fac573b50a5331' data-item-name='" + sanpham[i].name + "'> ADD TO CART </button>"
 
         }
         
@@ -81,7 +83,6 @@ function checklogin() {
 
     if (uid == "admin" && upw == "admin") {
         alert('Welcome Admin');
-        document.getElementById('top-bar-buttons').innerHTML = "<a href='/admin.html'><button>ADMIN</button></a>"
         window.open('/admin.html');
     }
     else {

@@ -5,39 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://app.snipcart.com">
     <link rel="preconnect" href="https://cdn.snipcart.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div>
-                <p>Hotline: 0901305739</p>
-            </div>
-            <div id="top-bar-buttons">
-                <a href="#signup"><button>SIGN IN</button></a>
-                <button class="snipcart-checkout">CHECKOUT</button>
+    <div class="navigation">
+        <div class="wrapper is-justify-content-flex-end topbar">
+            <a href="#signup"><button class="button text-is-blue top-bar-button">SIGN IN</button></a>
+            <button class="button snipcart-checkout text-is-blue top-bar-button">
+                <ion-icon name="cart-outline"></ion-icon>
+                <span>CHECKOUT</span>
+            </button>
+        </div>
+    </div>
+    <header class="is-blue">
+        <div class="wrapper">
+            <div class="columns topbar is-centered">
+                <div class="column">
+                    <div class="block">
+                        <img class="logo" src="/img/logo_white.png">
+                    </div>
+                </div>
+                <div class="column is-justify-content-flex-end topbar-right">
+                    <div class="navbar-menu">
+                        <ul>
+                        <span id="menu-items" class="navbar-end"></span>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <div class="navigation">
-        <div class="container">
-            <div>
-                <a href="#home"><img src="/img/logo_blue.png"  height="40px"></a> 
-            </div>
-            <ul>
-            <span id="menu-items"></span>
-            </ul>
-        </div>
+    <div id="main-body-display">
     </div>
-
-    <div id="main-body-display"></div>
 
     <div class="main-body hidden">
         <div id="#home">
@@ -47,30 +55,35 @@
                         <source src="/img/banner.mp4" type="video/mp4">
                     </video>
                     <div class="banner-overlay container">
-                        <h1>Use Internet Wherever You Go</h1>
+                        <p class="banner-text">Use Internet Wherever You Go</p>
                         <h3>Choose an original SIM or an innovative E-SIM. It's your choice!</h3>
+                        <br>
                         <span>
-                            <button class="cta-button">BUY GLOBAL SIM</button>
-                            <a href ="#products"><button class="cta-button">EXPLORE E-SIM</button></a>
+                            <a href ="#products"><button class="button is-primary">EXPLORE E-SIM</button></a>
                         </span>
                     </div>
                 </div>
             </div>
 
             <div id="#signup">
+                <div class="wrapper">
                 <div id="sign-up">
                     <div class="container">
                         <form class="sign-up-form" onsubmit="return nosubmit(event)">
                             <span>
-                            <h1>Sign Up Now</h1>
+                                <div class="section-heading">
+                                    <p class="is-size-4">Sign In</p>
+                                </div> 
                             <p>Login with both id & password = <strong>admin</strong> to access backend</p>
                             </span>
-                            <label for="username"><a>Username</a></label>
-                            <input id="username" name="username" type="text" required>
-                            <label for="password"><a>Password</a></label>
-                            <input id='password' name="password" type="password" required>
+                            <br>
+                            <label class="label" for="username"><a>Username</a></label>
+                            <input class="input" id="username" name="username" type="text" required>
+                            <label class="label" for="password"><a>Password</a></label>
+                            <input class="input" id='password' name="password" type="password" required>
                             <span id="button-row">
                                 <button onclick="checklogin()" class="register-button">Login</button>
+                                <br>
                                 <br>
                                 <p>Don't have an account yet? <a href="#">Register here.</a></p>
                             </span>
@@ -78,25 +91,30 @@
                         </form>
                     </div>
                 </div>
+                </div>
             </div>
 
             <div id="#products">
-                <div class="product-section">
-                <div class="container"> 
-                    <div id="product-list">
-                        <div id="product-name"></div>
+                <div class="wrapper">
+                    <div class="product-section">
+                        <div class="section-heading">
+                            <p class="is-size-4">Explore Our Products</p>
+                        </div> 
+                        <div id="product-list" >
+                            <div id="product-name" class="columns"></div>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
-
+    
     <div class="footer">
-        <div class="container">
-            <p>Copyright 2021</p>
+        <div class="wrapper">
+            <p>Copyright 2021. All rights reserve.</p>
         </div>
-    <script src="/js/main.js"></script>
-    <script async src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"></script>
-    <div hidden id="snipcart" data-api-key="NDI0NDZiOWItNDMzYy00Y2NmLTk0M2UtOTQ0YTZhNDEwMDI0NjM3NTYwNjg5OTg1Njk2NDk3" data-config-modal-style="side"></div>
+    </div>
 </body>
+<script src="/js/main.js"></script>
+<script async src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"></script>
+<div hidden id="snipcart" data-api-key="NDI0NDZiOWItNDMzYy00Y2NmLTk0M2UtOTQ0YTZhNDEwMDI0NjM3NTYwNjg5OTg1Njk2NDk3" data-config-modal-style="side"></div>
 </html>
