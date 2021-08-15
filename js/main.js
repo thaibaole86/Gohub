@@ -36,7 +36,9 @@ function displayHash() {
     let pagecontentload = document.getElementById("main-body-display");
     pagecontentload.innerHTML = document.getElementById(theHash).innerHTML;
 
-    if (theHash == "#products") {fetchdataproduct()}
+    if (theHash == "#products") {fetchdataproduct()};
+
+    if (theHash == "#blog") {fetchdatablog()}
   }
 
     
@@ -93,3 +95,49 @@ function checklogin() {
 function nosubmit(event){
     event.preventDefault();
 }
+
+///////////////////////////////////////// BLOG PAGE ////////////////////////////////
+// Fetch API Data Menu
+function fetchdatablog(){
+    fetch('https://gohub-b49c.restdb.io/rest/blog', {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'x-apikey': '610fb14469fac573b50a5331'
+      }
+    }).then(function(response) {
+        data = response.json();
+        return data;
+    })
+    .then(function(data) {
+        listblog(data)
+        latestmenuid = parseInt(data.length);
+        });
+  }
+  // Show blog list
+  function listblog(data) {
+    let blog = data;
+    for (i = 0; i < blog.length; i++ ) {
+      document.getElementById('blog-item').innerHTML += "<div id='blog-detail' class='column'>" + "<img class='blog-image' src=" + blog[i].imageurl + ">" + "<div class='blog-title'>" + blog[i].title + "</div>" + "<div class='blog-excerp'>" + blog[i].excerp + "<div><button onclick=renderblogarticle(this.id) id='"+ blog[i]._id + "' class='button'>Read more</button></div>" + "</div>";
+      }
+  }
+
+  function renderblogarticle(id) {
+    fetch(`https://gohub-b49c.restdb.io/rest/blog/${(id)}`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '610fb14469fac573b50a5331'
+    }
+}).then(function(response) {
+      bdata = response.json();
+      return bdata;
+  })
+
+  .then(function(bdata) {
+      console.log(bdata);
+      let article = bdata;
+      document.getElementById('blog-item').innerHTML = " ";
+      document.getElementById('blog-content-display').innerHTML = "<div><img class='article-image' src='" + article.imageurl + "'></div>" + "<div class='article-heading'>" + article.title + "</div>" + "<div class='article-content'>" + article.content + "</div>" 
+  }
+  )}

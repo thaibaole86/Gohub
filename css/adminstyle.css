@@ -46,7 +46,7 @@ table {
     padding: 20px;
 }
 
-#menu-table, #product-table  {
+#menu-table, #product-table, #blog-table  {
     border: 0px solid grey;
     padding:10px;
     width: 100%;
@@ -54,8 +54,8 @@ table {
     border-collapse: collapse;
 }
 
-#menu-table th, #product-table th {
-    background-color: #04AA6D;
+#menu-table th, #product-table th, #blog-table th {
+    background-color: #05b5dc;
     color: white;
     padding-top: 12px;
     padding-bottom: 12px;
@@ -113,4 +113,13 @@ tr:hover, tr:nth-child(even):hover {
 
 #product-detail, #new-product-detail {
     width: 100%
+}
+
+.is-primary {
+    background-color: #05b5dc !important;
+    color: #fff !important;
+}
+
+.blog-body {
+    padding: 30px;
 }

@@ -164,6 +164,12 @@ function editpositioninstantdown(id){
   location.reload();
   }
 
+  // Show New Menu Function
+  function toogleNewMenu() {
+    let newmenu = document.getElementById('new-menu-section');
+    newmenu.classList.remove("hidden");
+  }
+
   // Load page according to Hash URL
   function displayHash() {
     let theHash = window.location.hash;
@@ -174,9 +180,11 @@ function editpositioninstantdown(id){
     if ((theHash == "#product")) {
     fetchdataproduct();
     }
-    if (theHash == "#blog") {
-      loadeditor()
+
+    if ((theHash == "#blog")) {
+      fetchdatablog()
     }
+  
       let pagecontentload = document.getElementById("admin-display");
       pagecontentload.innerHTML = document.getElementById(theHash).innerHTML;
   }
@@ -216,6 +224,9 @@ function listproduct(pdata) {
 //Edit Product
 let productDataOption = [];
 function editproduct(id){
+  let editproduct = document.getElementById('product-detail');
+  editproduct.classList.remove("hidden");
+
   productDataOption = [];  
   fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, {
     method: "GET",
@@ -296,10 +307,8 @@ fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, {
 
 //Function of Add Menu & Edit Menu Buttons
 function toogleEditButton(){
-  let editproduct = document.getElementById('product-detail');
   let productlisting = document.getElementById('product-listing');
   let newproduct = document.getElementById('new-product-detail');
-  editproduct.classList.remove("hidden");
   productlisting.classList.remove("hidden");
   newproduct.classList.add("hidden");
 }
@@ -386,16 +395,28 @@ function deleteproduct(){
   location.reload();
 }
 
-function loadeditor() {
-  let quill = new Quill('#newblogcontent', {
-    modules: {
-    toolbar: [
-      [{ header: [1, 2, false] }],
-      ['bold', 'italic', 'underline'],
-      ['image', 'code-block']
-    ]
-  },
-  placeholder: 'Compose an epic...',
-  theme: 'snow'  // or 'bubble'
-  });
+///////////////////////////////////////// BLOG PAGE ////////////////////////////////
+// Fetch API Data Menu
+function fetchdatablog(){
+  fetch('https://gohub-b49c.restdb.io/rest/blog', {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '610fb14469fac573b50a5331'
+    }
+  }).then(function(response) {
+      data = response.json();
+      return data;
+  })
+  .then(function(data) {
+      listblog(data)
+      latestmenuid = parseInt(data.length);
+      });
+}
+// Show blog list
+function listblog(data) {
+  let blog = data;
+  for (i = 0; i < blog.length; i++ ) {
+    document.getElementById('bloglist').innerHTML += "<tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + blog[i]._id + "></ion-icon></center></td>"  + "<td>" + blog[i].title + "</td><td>" + blog[i].excerp + "</td><td>" + "<img width='100px' src=" + blog[i].imageurl + ">" + "</td>" + "</tr>";
+    }
 }
