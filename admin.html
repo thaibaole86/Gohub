@@ -199,6 +199,33 @@
               </table>
             </div>
           </div>
+
+          <div id="article-detail" class="box hidden">
+            <p class="subtitle is-5">Edit Product  Detail</p>
+            <label class="label">ID</label>
+            <input class="input" id="article-id" disabled>
+            <br>
+            <br>
+            <label class="label">Feature Image</label>
+            <div id="article-thumbnail-preview"></div>
+            <input class="input" id="article-image">
+            <br>
+            <br>
+            <label class="label">Title</label>
+            <input class="input" id="article-title">
+            <br>
+            <br>
+            <label class="label">Excerp</label>
+            <input class="input" id="article-excerp">
+            <br>
+            <label class="label">Content</label>
+            <textarea class="textarea" id="article-content">
+            </textarea>
+            <br>
+            <button class="button is-primary" onclick="updatearticle()">Update Article</button>
+            <button class="button is-danger" onclick="deletearticle()">Delete Article</button>
+          </div>
+
           <br>
         </div>
       </div>
@@ -207,4 +234,5 @@
 </div>
 </body>
 <script src="js/admin.js"></script>
+
 </html>

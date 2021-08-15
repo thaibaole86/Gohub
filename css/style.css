@@ -332,3 +332,7 @@ a {
     font-size: 40px;
     margin-bottom: 15px;
 }
+
+#blog-content-display {
+    margin-bottom: 60px;
+}

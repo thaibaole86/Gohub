@@ -417,6 +417,79 @@ function fetchdatablog(){
 function listblog(data) {
   let blog = data;
   for (i = 0; i < blog.length; i++ ) {
-    document.getElementById('bloglist').innerHTML += "<tr>" + "<td><center><ion-icon name='create-outline' onclick='editproduct(this.id)'"  + " id=" + blog[i]._id + "></ion-icon></center></td>"  + "<td>" + blog[i].title + "</td><td>" + blog[i].excerp + "</td><td>" + "<img width='100px' src=" + blog[i].imageurl + ">" + "</td>" + "</tr>";
+    document.getElementById('bloglist').innerHTML += "<tr>" + "<td><center><ion-icon name='create-outline' onclick='editarticle(this.id)'"  + " id=" + blog[i]._id + "></ion-icon></center></td>"  + "<td>" + blog[i].title + "</td><td>" + blog[i].excerp + "</td><td>" + "<img width='100px' src=" + blog[i].imageurl + ">" + "</td>" + "</tr>";
     }
+}
+
+//Edit Article
+function editarticle(id){
+  let editarticle = document.getElementById('article-detail');
+  editarticle.classList.remove("hidden");
+
+  fetch(`https://gohub-b49c.restdb.io/rest/blog/${(id)}`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '610fb14469fac573b50a5331'
+    }
+}).then(function(response) {
+      bdata = response.json();
+      return bdata;
+  })
+  .then(function(bdata) {
+    console.log(bdata)
+    document.getElementById('article-id').value = bdata._id;
+    document.getElementById('article-title').value = bdata.title;
+    document.getElementById('article-excerp').value = bdata.excerp;
+    document.getElementById('article-image').value = bdata.imageurl;
+    document.getElementById('article-content').value = bdata.content;
+    document.getElementById('article-thumbnail-preview').innerHTML = "<img width='30%' src=" + bdata.imageurl + ">"
+  });   
+}
+
+//Update Article
+function updatearticle(){
+  let id = document.getElementById('article-id').value;
+  let _editdata = {
+      "title": document.getElementById('article-title').value,
+      "excerp": document.getElementById('article-excerp').value,
+      "imageurl": document.getElementById('article-image').value,
+      "content": document.getElementById('article-content').value,
+      }
+  
+fetch(`https://gohub-b49c.restdb.io/rest/blog/${(id)}`, { 
+    method: "PATCH",
+    body: JSON.stringify(_editdata),
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '610fb14469fac573b50a5331'
+    }
+  })
+  .then(response => response.json()) 
+  .then(json => console.log(json));
+  alert('Successfully Updated Article');
+  location.reload();
+
+}
+
+//Delete blog instantly
+function deletearticle(){
+  let id = document.getElementById('article-id').value;
+  if (id == "") {
+    alert('Please choose article first');
+    return;
+  }
+
+  fetch(`https://gohub-b49c.restdb.io/rest/blog/${(id)}`, { 
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '610fb14469fac573b50a5331'
+    }
+  })
+  .then(response => response.json()) 
+  .then(json => console.log(json));
+
+  alert('Successfully Deleted Article');
+  location.reload();
 }
