@@ -4,18 +4,16 @@ window.addEventListener('load', displayHash);
 
 // Fetch API Data Menu
 function fetchdatamenu(){
-    let myHeaders = new Headers();
-    myHeaders.append('x-apikey', '610fb14469fac573b50a5331');
-    fetch('https://gohub-b49c.restdb.io/rest/menu?q={}&h={%22$orderby%22:%20{%22id%22:%201}}', {
-        method: "GET",
-        headers: {
-          'Content-Type': 'application/json',
-          'x-apikey': '610fb14469fac573b50a5331'
-        }
-    }).then(function(response) {
-        data = response.json();
-        return data;
-    })
+fetch('https://gohub-b49c.restdb.io/rest/menu?q={}&h={%22$orderby%22:%20{%22id%22:%201}}', {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'x-apikey': '610fb14469fac573b50a5331'
+    }
+  }).then(function(response) {
+      data = response.json();
+      return data;
+  })
     .then(function(data) {
         addmenu(data)
         });
@@ -56,7 +54,7 @@ function fetchdataproduct(){
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
-          'x-apikey': '3d05b2dcad1a8586d19bc0f2f303e5061387d'
+          'x-apikey': '610fb14469fac573b50a5331'
         }
     }).then(function(response) {
         productdata = response.json();
