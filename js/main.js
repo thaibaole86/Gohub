@@ -119,7 +119,7 @@ function fetchdatablog(){
     let blog = data;
     document.getElementById('blog-content-display').innerHTML =  " ";
     for (i = 0; i < blog.length; i++ ) {
-      document.getElementById('blog-item').innerHTML += "<div id='blog-detail' class='column'>" + "<img class='blog-image' src=" + blog[i].imageurl + ">" + "<div class='blog-title'>" + blog[i].title + "</div>" + "<div class='blog-excerp'>" + blog[i].excerp + "<div><br><br><button onclick=renderblogarticle(this.id) id='"+ blog[i]._id + "' class='button'>Read more</button></div>" + "</div>";
+      document.getElementById('blog-item').innerHTML += "<div id='blog-detail' class='column is-one-third'>" + "<img class='blog-image' src=" + blog[i].imageurl + ">" + "<div class='blog-title'>" + blog[i].title + "</div>" + "<div class='blog-excerp'>" + blog[i].excerp + "<div><br><br><button onclick=renderblogarticle(this.id) id='"+ blog[i]._id + "' class='button'>Read more</button></div>" + "</div>";
       }
   }
 

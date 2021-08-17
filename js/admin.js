@@ -52,10 +52,11 @@ function addmenu(){
     }
   })
   .then(response => response.json()) 
-  .then(json => console.log(json));
-
-  alert('Successfully Added New Menu Item');
-  location.reload();
+  .then(json => console.log(json))
+  .then(function() {
+    alert('Successfully Added New Menu Item');
+    location.reload();
+  })
 }
 
 //Delete menu instantly
@@ -67,9 +68,11 @@ function deletemenuinstant(id){
     }
     })
     .then(response => response.json())
-    .then(deleteConfirmation => console.log("DELETE: ", deleteConfirmation));
-    alert('Successfully Deleted Menu Item');
-    location.reload();
+    .then(deleteConfirmation => console.log("DELETE: ", deleteConfirmation))
+    .then(function(){
+      alert('Successfully Deleted Menu Item');
+      location.reload();
+    })
   }
 
 
@@ -88,11 +91,11 @@ function editmenuinstant(id){
   }
   })
   .then(response => response.json()) 
-  .then(json => console.log(json));
-
-  alert('Successfully Edited New Menu Item');
-  location.reload();
-
+  .then(json => console.log(json))
+  .then(function() {
+    alert('Successfully Edited New Menu Item');
+    location.reload();
+  })
 }
 
   //Edit menu URL instantly
@@ -110,11 +113,11 @@ function editmenuinstant(id){
       }
     })
     .then(response => response.json()) 
-    .then(json => console.log(json));
-  
-    alert('Successfully Edited New Menu Url');
-    location.reload();
-  
+    .then(json => console.log(json))
+    .then(function() {
+      alert('Successfully Edited New Menu Url');
+      location.reload();
+    })
   }
 
 //Edit menu Position functions
@@ -135,11 +138,15 @@ function editpositioninstantup(id){
     }
   })
   .then(response => response.json()) 
-  .then(json => console.log(json));
-  document.getElementById(position).innerHTML = newposition;
-  alert('Successfully Adjusted Item Position');
-  location.reload();
-  }
+  .then(json => console.log(json))
+  .then(
+    function() {
+      document.getElementById(position).innerHTML = newposition;
+    alert('Successfully Adjusted Item Position');
+    location.reload();
+    }
+  )
+}
 
 function editpositioninstantdown(id){
   let position = 'menuposition-' + id;
@@ -158,10 +165,12 @@ function editpositioninstantdown(id){
     }
   })
   .then(response => response.json()) 
-  .then(json => console.log(json));
-  document.getElementById(position).innerHTML = newposition;
-  alert('Successfully Adjusted Item Position');
-  location.reload();
+  .then(json => console.log(json))
+  .then(function() {
+    document.getElementById(position).innerHTML = newposition;
+    alert('Successfully Adjusted Item Position');
+    location.reload();
+  })
   }
 
   // Show New Menu Function
@@ -299,10 +308,11 @@ fetch(`https://gohub-b49c.restdb.io/rest/product/${(id)}`, {
     }
   })
   .then(response => response.json()) 
-  .then(json => console.log(json));
-
-  alert('Successfully Updated Product');
-  location.reload();
+  .then(json => console.log(json))
+  .then(function(){
+    alert('Successfully Updated Product');
+    location.reload();
+  })
 }
 
 //Function of Add Menu & Edit Menu Buttons
@@ -349,11 +359,11 @@ function newproduct(){
     }
   })
   .then(response => response.json()) 
-  .then(json => console.log(json));
-
-  alert('Successfully Added Product');
-  location.reload();
-
+  .then(json => console.log(json))
+  .then(function() {
+    alert('Successfully Added Product');
+    location.reload();
+  })
 }
 
 let datapackages = [];
@@ -488,8 +498,9 @@ function deletearticle(){
     }
   })
   .then(response => response.json()) 
-  .then(json => console.log(json));
-
-  alert('Successfully Deleted Article');
-  location.reload();
+  .then(json => console.log(json))
+  .then(function() {
+    alert('Successfully Deleted Article');
+    location.reload();
+  })
 }

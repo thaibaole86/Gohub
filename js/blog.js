@@ -21,9 +21,10 @@ function addblog(){
       }
     })
     .then(response => response.json()) 
-    .then(json => console.log(json));
-  
-    alert('Successfully Added Blog');
-    location.reload();
+    .then(json => console.log(json))
+    .then(function(){
+      alert('Successfully Added Blog');
+      location.reload();
+    })
   
 }
